@@ -1,6 +1,8 @@
 import 'package:erp/home/presentation/components/home_view/home_view.dart';
+import 'package:erp/home/presentation/controllers/bottom_nav_bar/bottom_nav_bar_cubit.dart';
 import 'package:erp/utils/localization/ar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,18 +10,13 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
+    final int currentIndex =
+        context.watch<BottomNavBarCubit>().state.activeIndex;
     return Scaffold(
-      // appBar: AppBar(
-      //   leading: IconButton(
-      //     icon: const Icon(Icons.menu),
-      //     tooltip: ArabicLangLoc.homeScreenAppBarMenue,
-      //     onPressed: () {},
-      //   ),
-      //   title: const Text(ArabicLangLoc.homeScreenAppBarTitle),
-      // ),
       bottomNavigationBar: NavigationBar(
-        onDestinationSelected: (int i) {},
+        selectedIndex: currentIndex,
+        onDestinationSelected: (int i) =>
+            BlocProvider.of<BottomNavBarCubit>(context).changeIndex(i),
         destinations: const [
           NavigationDestination(
               icon: Icon(Icons.home),
@@ -31,7 +28,18 @@ class HomeScreen extends StatelessWidget {
               label: ArabicLangLoc.homeScreenAppBarNotify),
         ],
       ),
-      body: HomeView(theme: theme),
+      body: const <Widget>[
+        HomeView(),
+        Center(
+          child: Text("المنتجات"),
+        ),
+        Center(
+          child: Text("المالية"),
+        ),
+        Center(
+          child: Text("الإشعارات"),
+        ),
+      ][currentIndex],
     );
   }
 }

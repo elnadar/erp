@@ -6,13 +6,12 @@ import 'package:go_router/go_router.dart';
 class HomeView extends StatelessWidget {
   const HomeView({
     Key? key,
-    required this.theme,
   }) : super(key: key);
-
-  final ThemeData theme;
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+
     return CustomScrollView(
       slivers: [
         SliverAppBar.large(
