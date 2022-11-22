@@ -1,6 +1,8 @@
 part of 'bottom_nav_bar_cubit.dart';
 
 @immutable
-abstract class BottomNavBarState {}
+class BottomNavBarState {
+  final int activeIndex;
 
-class BottomNavBarInitial extends BottomNavBarState {}
+  BottomNavBarState(this.activeIndex);
+}
