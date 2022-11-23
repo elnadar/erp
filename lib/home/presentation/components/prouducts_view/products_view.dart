@@ -1,3 +1,4 @@
+import 'package:erp/home/presentation/components/menu_bar_icon/menu_bar_icon.dart';
 import 'package:erp/utils/localization/ar.dart';
 import 'package:flutter/material.dart';
 
@@ -12,11 +13,7 @@ class ProductsView extends StatelessWidget {
       child: CustomScrollView(
         slivers: [
           SliverAppBar(
-            leading: IconButton(
-              icon: const Icon(Icons.menu),
-              tooltip: ArabicLangLoc.homeScreenAppBarMenue,
-              onPressed: () {},
-            ),
+            leading: const MenuBarIcon(),
             actions: [
               IconButton(
                 icon: const Icon(Icons.more_vert_rounded),

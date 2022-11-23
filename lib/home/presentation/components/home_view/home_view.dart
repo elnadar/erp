@@ -1,4 +1,5 @@
 import 'package:erp/components/custom_cards.dart';
+import 'package:erp/home/presentation/components/menu_bar_icon/menu_bar_icon.dart';
 import 'package:erp/utils/localization/ar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -15,11 +16,7 @@ class HomeView extends StatelessWidget {
     return CustomScrollView(
       slivers: [
         SliverAppBar.large(
-          leading: IconButton(
-            icon: const Icon(Icons.menu),
-            tooltip: ArabicLangLoc.homeScreenAppBarMenue,
-            onPressed: () {},
-          ),
+          leading: const MenuBarIcon(),
           title: const Text(ArabicLangLoc.homeScreenAppBarTitle),
           actions: [
             IconButton(

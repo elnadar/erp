@@ -15,6 +15,7 @@ class HomeScreen extends StatelessWidget {
     final int currentIndex =
         context.watch<BottomNavBarCubit>().state.activeIndex;
     return Scaffold(
+      drawer: Drawer(),
       bottomNavigationBar: NavigationBar(
         selectedIndex: currentIndex,
         onDestinationSelected: (int i) =>
