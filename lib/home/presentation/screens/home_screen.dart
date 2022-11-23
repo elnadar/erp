@@ -15,7 +15,36 @@ class HomeScreen extends StatelessWidget {
     final int currentIndex =
         context.watch<BottomNavBarCubit>().state.activeIndex;
     return Scaffold(
-      drawer: Drawer(),
+      drawer: Drawer(
+          child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          const DrawerHeader(
+            child: Text(
+              'Drawer Header',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+              ),
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.message),
+            title: Text('الرسائل'),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: Icon(Icons.account_circle),
+            title: Text('الملف الشخصي'),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text('الاعدادات'),
+            onTap: () {},
+          ),
+        ],
+      )),
       bottomNavigationBar: NavigationBar(
         selectedIndex: currentIndex,
         onDestinationSelected: (int i) =>
