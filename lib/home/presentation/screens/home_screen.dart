@@ -1,4 +1,5 @@
 import 'package:erp/home/presentation/components/home_view/home_view.dart';
+import 'package:erp/home/presentation/components/prouducts_view/products_view.dart';
 import 'package:erp/home/presentation/controllers/bottom_nav_bar/bottom_nav_bar_cubit.dart';
 import 'package:erp/utils/localization/ar.dart';
 import 'package:flutter/material.dart';
@@ -30,9 +31,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: const <Widget>[
         HomeView(),
-        Center(
-          child: Text("المنتجات"),
-        ),
+        ProductsView(),
         Center(
           child: Text("المالية"),
         ),

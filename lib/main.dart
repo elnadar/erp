@@ -1,6 +1,7 @@
 import 'package:erp/auth/presentation/screens/login_screen.dart';
 import 'package:erp/home/presentation/screens/home_screen.dart';
 import 'package:erp/utils/routers/routers.dart';
+import 'package:erp/utils/theme/colors.dart';
 import 'package:erp/utils/theme/reusable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final mainColorScheme = ColorScheme.fromSeed(seedColor: Colors.lightBlue);
     return MaterialApp.router(
       localizationsDelegates: const [
         GlobalCupertinoLocalizations.delegate,
@@ -28,11 +30,23 @@ class MyApp extends StatelessWidget {
       locale: const Locale("ar", "AE"),
       title: 'Flutter Demo',
       theme: ThemeData(
-        useMaterial3: true,
-        //primarySwatch: Colors.teal,
-        // colorSchemeSeed: const Color(0xff6750a4),
-        colorSchemeSeed: Colors.blueAccent,
         textTheme: mainTextTheme,
+        indicatorColor: mainColorScheme.primary,
+        useMaterial3: true,
+        tabBarTheme: theme.tabBarTheme.copyWith(
+            indicator: UnderlineTabIndicator(
+              borderSide: BorderSide(
+                  width: 3.0,
+                  color: mainColorScheme.primary,
+                  style: BorderStyle.solid),
+            ),
+            labelColor: mainColorScheme.primary,
+            unselectedLabelColor: mainColorScheme.onSurfaceVariant,
+            labelStyle: mainTextTheme.titleSmall,
+            unselectedLabelStyle: mainTextTheme.titleSmall),
+        // primarySwatch: Colors.teal,
+        // colorSchemeSeed: const Color(0xff6750a4),
+        colorScheme: mainColorScheme,
         inputDecorationTheme: theme.inputDecorationTheme.copyWith(
           border: const OutlineInputBorder(),
         ),
