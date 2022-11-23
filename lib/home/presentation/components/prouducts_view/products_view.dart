@@ -6,8 +6,7 @@ class ProductsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-
+    // final ThemeData theme = Theme.of(context);
     return DefaultTabController(
       length: 2,
       child: CustomScrollView(
@@ -24,28 +23,34 @@ class ProductsView extends StatelessWidget {
                 onPressed: () {},
               )
             ],
+            floating: true,
             pinned: true,
+            snap: true,
+            stretch: true,
             title: const Text("المنتجات"),
             bottom: const TabBar(
               // labelColor: theme.colorScheme.secondary,
               tabs: [
                 Tab(
-                  child: Text("الواردات"),
+                  text: "الخامات",
                 ),
                 Tab(
-                  text: "الصادرات",
+                  text: "المنتجات",
                 ),
               ],
             ),
           ),
-          SliverFillRemaining(
-            child: const TabBarView(
-              children: [
-                DecoratedBox(
-                    decoration: BoxDecoration(),
-                    child: Icon(Icons.directions_car)),
-                Icon(Icons.directions_transit),
-              ],
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 1500,
+              child: const TabBarView(
+                children: [
+                  DecoratedBox(
+                      decoration: BoxDecoration(),
+                      child: Icon(Icons.directions_car)),
+                  Icon(Icons.directions_transit),
+                ],
+              ),
             ),
           )
         ],
