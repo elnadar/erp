@@ -33,6 +33,10 @@ class MyApp extends StatelessWidget {
         textTheme: mainTextTheme,
         indicatorColor: mainColorScheme.primary,
         useMaterial3: true,
+        drawerTheme: DrawerTheme.of(context).copyWith(
+          backgroundColor: mainColorScheme.surface,
+          elevation: 0,
+        ),
         tabBarTheme: theme.tabBarTheme.copyWith(
             indicator: UnderlineTabIndicator(
               borderSide: BorderSide(
