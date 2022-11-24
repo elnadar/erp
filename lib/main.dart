@@ -1,5 +1,3 @@
-import 'package:erp/auth/presentation/screens/login_screen.dart';
-import 'package:erp/home/presentation/screens/home_screen.dart';
 import 'package:erp/utils/routers/routers.dart';
 import 'package:erp/utils/theme/colors.dart';
 import 'package:erp/utils/theme/reusable.dart';
@@ -17,7 +15,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final mainColorScheme = ColorScheme.fromSeed(seedColor: Colors.lightBlue);
     return MaterialApp.router(
       localizationsDelegates: const [
         GlobalCupertinoLocalizations.delegate,
