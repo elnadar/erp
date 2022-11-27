@@ -1,4 +1,5 @@
 import 'package:erp/home/presentation/components/menu_bar_icon/menu_bar_icon.dart';
+import 'package:erp/home/presentation/components/prouducts_view/components/materials_view/materials_view.dart';
 import 'package:erp/utils/localization/ar.dart';
 import 'package:flutter/material.dart';
 
@@ -37,19 +38,11 @@ class ProductsView extends StatelessWidget {
               ],
             ),
           ),
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: 1500,
-              child: const TabBarView(
-                children: [
-                  DecoratedBox(
-                      decoration: BoxDecoration(),
-                      child: Icon(Icons.directions_car)),
-                  Icon(Icons.directions_transit),
-                ],
-              ),
+          SliverFillRemaining(
+            child: Expanded(
+              child: TabBarView(children: [MaterialsView(), MaterialsView()]),
             ),
-          )
+          ),
         ],
       ),
     );
