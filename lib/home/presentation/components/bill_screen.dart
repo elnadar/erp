@@ -24,43 +24,45 @@ class BillScreen extends StatelessWidget {
         SliverFillRemaining(
           hasScrollBody: false,
           child: Column(children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: OutlinedCard(
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Center(child: Text("فوترة مصروفات")),
-                        ],
+            IntrinsicHeight(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: OutlinedCard(
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Center(child: Text("فوترة مصروفات")),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: OutlinedCard(
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Wrap(
-                        children: [
-                          ActionChip(
-                            avatar: Icon(Icons.location_pin),
-                            label: Text("الجمالية"),
-                            disabledColor: theme.colorScheme.surfaceVariant,
-                          ),
-                          ActionChip(
-                            avatar: Icon(Icons.done_all),
-                            label: Text(""),
-                          ),
-                        ],
+                  Expanded(
+                    child: OutlinedCard(
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Wrap(
+                          children: [
+                            ActionChip(
+                              avatar: Icon(Icons.location_pin),
+                              label: Text("الجمالية"),
+                              disabledColor: theme.colorScheme.surfaceVariant,
+                            ),
+                            ActionChip(
+                              avatar: Icon(Icons.done_all),
+                              label: Text(""),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             )
           ]),
         )
