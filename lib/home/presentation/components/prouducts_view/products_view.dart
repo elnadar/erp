@@ -38,8 +38,8 @@ class ProductsView extends StatelessWidget {
               ],
             ),
           ),
-          SliverFillRemaining(
-            child: Expanded(
+          const SliverFillRemaining(
+            child: SizedBox.expand(
               child: TabBarView(children: [MaterialsView(), MaterialsView()]),
             ),
           ),
