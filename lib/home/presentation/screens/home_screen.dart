@@ -20,6 +20,7 @@ class HomeScreen extends StatelessWidget {
     final int currentIndex =
         context.watch<BottomNavBarCubit>().state.activeIndex;
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       drawer: DrawerMat3(
           child: ListView(
         padding: EdgeInsets.zero,
