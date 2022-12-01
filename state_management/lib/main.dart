@@ -30,7 +30,6 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ContactBook contactBook = ContactBook();
     return Scaffold(
       appBar: AppBar(title: const Text("Home Page")),
       floatingActionButton: FloatingActionButton(
@@ -39,14 +38,31 @@ class MyHomePage extends StatelessWidget {
         },
         child: const Icon(Icons.add),
       ),
-      body: ListView.builder(
-          itemCount: contactBook.length,
-          itemBuilder: (BuildContext context, int index) {
-            final Contact contact = contactBook.contact(atIndex: index)!;
-            return ListTile(
-              title: Text(contact.name),
-            );
-          }),
+      body: ValueListenableBuilder(
+        valueListenable: ContactBook(),
+        builder: (context, value, builder) {
+          final List<Contact> contacts = value;
+          return ListView.builder(
+            itemCount: contacts.length,
+            itemBuilder: (BuildContext context, int index) {
+              final Contact contact = contacts[index];
+              return Dismissible(
+                onDismissed: (direction) {
+                  ContactBook().remove(contact: contact);
+                },
+                key: ValueKey(contact.id),
+                child: Material(
+                  color: Colors.white,
+                  elevation: 6.0,
+                  child: ListTile(
+                    title: Text(contact.name),
+                  ),
+                ),
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }
