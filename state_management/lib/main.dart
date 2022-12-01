@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:state_management/models/contact_book.dart';
+import 'package:state_management/models/contact_model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,56 +13,87 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+          primarySwatch: Colors.blue,
+          appBarTheme: AppBarTheme.of(context).copyWith(centerTitle: true)),
+      home: const MyHomePage(),
+      routes: {
+        '/new-contact': (context) => const NewContactView(),
+      },
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  Widget build(BuildContext context) {
+    final ContactBook contactBook = ContactBook();
+    return Scaffold(
+      appBar: AppBar(title: const Text("Home Page")),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          await Navigator.of(context).pushNamed('/new-contact');
+        },
+        child: const Icon(Icons.add),
+      ),
+      body: ListView.builder(
+          itemCount: contactBook.length,
+          itemBuilder: (BuildContext context, int index) {
+            final Contact contact = contactBook.contact(atIndex: index)!;
+            return ListTile(
+              title: Text(contact.name),
+            );
+          }),
+    );
+  }
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class NewContactView extends StatefulWidget {
+  const NewContactView({super.key});
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  @override
+  State<NewContactView> createState() => _NewContactViewState();
+}
+
+class _NewContactViewState extends State<NewContactView> {
+  late final TextEditingController _controller;
+
+  @override
+  void initState() {
+    _controller = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+      appBar: AppBar(title: const Text("Add a new contact")),
+      body: Column(
+        children: [
+          TextField(
+            controller: _controller,
+            decoration: const InputDecoration(
+              hintText: 'Enter a new contact name here...',
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+          ),
+          TextButton(
+            onPressed: () {
+              final contact = Contact(name: _controller.text);
+              ContactBook().add(contact: contact);
+              Navigator.of(context).pop();
+            },
+            child: const Text("Add Contact"),
+          ),
+        ],
       ),
     );
   }
