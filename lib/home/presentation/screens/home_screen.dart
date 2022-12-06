@@ -4,6 +4,7 @@ import 'package:erp/home/presentation/components/drawer_mat3/drawer_mat3_headlin
 import 'package:erp/home/presentation/components/drawer_mat3/drawer_mat3_tile.dart';
 import 'package:erp/home/presentation/components/finance_view/finance_view.dart';
 import 'package:erp/home/presentation/components/home_view/home_view.dart';
+import 'package:erp/home/presentation/components/people_view/people_view.dart';
 import 'package:erp/home/presentation/components/prouducts_view/products_view.dart';
 import 'package:erp/home/presentation/controllers/bottom_nav_bar/bottom_nav_bar_cubit.dart';
 import 'package:erp/utils/localization/ar.dart';
@@ -72,6 +73,7 @@ class HomeScreen extends StatelessWidget {
           NavigationDestination(
               icon: Icon(Icons.home),
               label: ArabicLangLoc.homeScreenAppBarTitle),
+          NavigationDestination(icon: Icon(Icons.people), label: "الأشخاص"),
           NavigationDestination(icon: Icon(Icons.category), label: "المنتجات"),
           NavigationDestination(icon: Icon(Icons.money), label: "المالية"),
           NavigationDestination(
@@ -81,6 +83,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: const <Widget>[
         HomeView(),
+        PeopleView(),
         ProductsView(),
         FinanceView(),
         Center(
