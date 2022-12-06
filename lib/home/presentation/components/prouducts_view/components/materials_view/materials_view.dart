@@ -43,72 +43,7 @@ class MaterialsView extends StatelessWidget {
             child: Align(
               alignment: AlignmentDirectional.bottomEnd,
               child: FloatingActionButton(
-                onPressed: () => showModalBottomSheet(
-                  // constraints: BoxConstraints.expand(height: height / 2),
-                  isScrollControlled: true,
-                  shape: const RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.vertical(top: Radius.circular(16))),
-                  context: context,
-                  builder: (context) => Padding(
-                    padding: EdgeInsets.only(
-                        bottom: MediaQuery.of(context).viewInsets.bottom),
-                    child: DraggableScrollableSheet(
-                        expand: false,
-                        builder: (context, scrollController) {
-                          return Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: SizedBox(
-                                  height: 7,
-                                  width: 60,
-                                  child: DecoratedBox(
-                                      decoration: BoxDecoration(
-                                          color: mainColorScheme.surfaceVariant,
-                                          borderRadius:
-                                              BorderRadius.circular(5))),
-                                ),
-                              ),
-                              const Divider(
-                                thickness: 1,
-                                height: 0,
-                              ),
-                              Expanded(
-                                child: SafeArea(
-                                  child: SingleChildScrollView(
-                                    controller: scrollController,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(16.0),
-                                      child: Form(
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            TextFormField(),
-                                            const SizedBox(height: 16),
-                                            TextFormField(),
-                                            const SizedBox(height: 16),
-                                            TextFormField(),
-                                            const SizedBox(height: 16),
-                                            TextFormField(),
-                                            const SizedBox(height: 16),
-                                            TextFormField(),
-                                            const SizedBox(height: 16),
-                                            TextFormField(),
-                                            const SizedBox(height: 16),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          );
-                        }),
-                  ),
-                ),
+                onPressed: () => showMaterialsSheet(context),
                 tooltip: "إضافة خامة",
                 child: const Icon(Icons.add),
               ),
@@ -118,4 +53,71 @@ class MaterialsView extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<dynamic> showMaterialsSheet(BuildContext context) {
+  return showModalBottomSheet(
+    // constraints: BoxConstraints.expand(height: height / 2),
+    isScrollControlled: true,
+    shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16))),
+    context: context,
+    builder: (context) => Padding(
+      padding:
+          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      child: DraggableScrollableSheet(
+          expand: false,
+          builder: (context, scrollController) {
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: SizedBox(
+                    height: 7,
+                    width: 60,
+                    child: DecoratedBox(
+                        decoration: BoxDecoration(
+                            color: mainColorScheme.surfaceVariant,
+                            borderRadius: BorderRadius.circular(5))),
+                  ),
+                ),
+                const Divider(
+                  thickness: 1,
+                  height: 0,
+                ),
+                Expanded(
+                  child: SafeArea(
+                    child: SingleChildScrollView(
+                      controller: scrollController,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Form(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              TextFormField(),
+                              const SizedBox(height: 16),
+                              TextFormField(),
+                              const SizedBox(height: 16),
+                              TextFormField(),
+                              const SizedBox(height: 16),
+                              TextFormField(),
+                              const SizedBox(height: 16),
+                              TextFormField(),
+                              const SizedBox(height: 16),
+                              TextFormField(),
+                              const SizedBox(height: 16),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          }),
+    ),
+  );
 }
