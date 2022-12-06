@@ -42,34 +42,38 @@ Future<dynamic> _sheetBuilder(BuildContext context) {
   );
 }
 
-Widget _builderOfSheetBuilder(BuildContext context) => SingleChildScrollView(
-      controller: ModalScrollController.of(context),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextFormField(
-                decoration: const InputDecoration(labelText: "اسم المورد"),
-              ),
-              const SizedBox(height: 16),
-              TextFormField(
-                decoration: const InputDecoration(labelText: "رقم الهاتف"),
-              ),
-              const SizedBox(height: 16),
-              TextFormField(
-                decoration: const InputDecoration(labelText: "العنوان"),
-              ),
-              const SizedBox(height: 22),
-              SizedBox(
-                width: double.infinity,
-                child: FilledButton(
-                  onPressed: () {},
-                  child: const Text("إضافة المورد"),
+Widget _builderOfSheetBuilder(BuildContext context) => Padding(
+      padding:
+          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      child: SingleChildScrollView(
+        controller: ModalScrollController.of(context),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Form(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextFormField(
+                  decoration: const InputDecoration(labelText: "اسم المورد"),
                 ),
-              ),
-            ],
+                const SizedBox(height: 16),
+                TextFormField(
+                  decoration: const InputDecoration(labelText: "رقم الهاتف"),
+                ),
+                const SizedBox(height: 16),
+                TextFormField(
+                  decoration: const InputDecoration(labelText: "العنوان"),
+                ),
+                const SizedBox(height: 22),
+                SizedBox(
+                  width: double.infinity,
+                  child: FilledButton(
+                    onPressed: () {},
+                    child: const Text("إضافة المورد"),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
