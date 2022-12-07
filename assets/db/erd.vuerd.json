@@ -17,7 +17,7 @@
       "columnNotNull": true,
       "relationship": true
     },
-    "database": "MySQL",
+    "database": "SQLite",
     "databaseName": "",
     "canvasType": "ERD",
     "language": "GraphQL",
