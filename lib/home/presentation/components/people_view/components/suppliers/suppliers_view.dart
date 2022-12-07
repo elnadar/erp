@@ -101,14 +101,31 @@ class _AddSupplierFormState extends State<_AddSupplierForm> {
         children: [
           TextFormField(
             decoration: const InputDecoration(labelText: "اسم المورد"),
+            keyboardType: TextInputType.name,
+            textInputAction: TextInputAction.next,
           ),
           const SizedBox(height: 16),
           TextFormField(
             decoration: const InputDecoration(labelText: "رقم الهاتف"),
+            keyboardType: TextInputType.phone,
+            textInputAction: TextInputAction.next,
           ),
           const SizedBox(height: 16),
           TextFormField(
             decoration: const InputDecoration(labelText: "العنوان"),
+            keyboardType: TextInputType.streetAddress,
+            textInputAction: TextInputAction.next,
+          ),
+          const SizedBox(height: 16),
+          TextFormField(
+            minLines: 3,
+            maxLines: 5,
+            keyboardType: TextInputType.multiline,
+            textInputAction: TextInputAction.done,
+            decoration: const InputDecoration(
+              labelText: "ملاحظات",
+              alignLabelWithHint: true,
+            ),
           ),
           const SizedBox(height: 22),
           SizedBox(
