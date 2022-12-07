@@ -1,8 +1,3 @@
-
-CREATE TABLE Assets
-(
-);
-
 CREATE TABLE CustomersTypes
 (
   id   INT     NOT NULL UNIQUE,
