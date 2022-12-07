@@ -121,7 +121,7 @@ class _AddSupplierFormState extends State<_AddSupplierForm> {
             minLines: 3,
             maxLines: 5,
             keyboardType: TextInputType.multiline,
-            textInputAction: TextInputAction.done,
+            textInputAction: TextInputAction.newline,
             decoration: const InputDecoration(
               labelText: "ملاحظات",
               alignLabelWithHint: true,
