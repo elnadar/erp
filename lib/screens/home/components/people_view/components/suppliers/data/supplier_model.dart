@@ -45,7 +45,7 @@ class SupplierModel {
 
   Map<String, dynamic> toSqlInsert() {
     return <String, dynamic>{
-      'name': name == '' ? null : phoneNumber,
+      'name': name == '' ? null : name,
       'phone_number': phoneNumber == '' ? null : phoneNumber,
       'address': address == '' ? null : address,
       'notes': notes == '' ? null : notes,
