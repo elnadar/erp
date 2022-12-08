@@ -184,7 +184,7 @@ packages:
     source: hosted
     version: "2.2.4"
   drift:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: drift
       url: "https://pub.dartlang.org"
@@ -428,14 +428,14 @@ packages:
     source: hosted
     version: "2.1.0"
   path:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: path
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.2"
   path_provider:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: path_provider
       url: "https://pub.dartlang.org"
@@ -593,13 +593,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.9.1"
-  sqlite3_flutter_libs:
-    dependency: "direct main"
-    description:
-      name: sqlite3_flutter_libs
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.5.12"
   sqlparser:
     dependency: transitive
     description:
