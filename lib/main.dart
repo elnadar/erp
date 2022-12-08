@@ -1,11 +1,15 @@
+import 'package:erp/home/presentation/components/people_view/components/suppliers/suppliers_db.dart';
 import 'package:erp/utils/routers/routers.dart';
 import 'package:erp/utils/theme/colors.dart';
 import 'package:erp/utils/theme/reusable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  final log = await DbSupplierTable().listRows();
+  debugPrint(log.toString());
+
   runApp(const MyApp());
 }
 
