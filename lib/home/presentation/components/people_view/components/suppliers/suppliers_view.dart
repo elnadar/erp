@@ -1,6 +1,7 @@
 import 'package:erp/components/custom_buttons.dart';
 import 'package:erp/components/custom_text.dart';
 import 'package:erp/home/presentation/components/people_view/components/suppliers/cubit/suplliers/suplliers_cubit.dart';
+import 'package:erp/home/presentation/components/people_view/components/suppliers/cubit/suppliers_add/suppliers_add_cubit.dart';
 import 'package:erp/home/presentation/components/sliver_tab_bar/sliver_tab_bar_scrollable_child.dart';
 import 'package:erp/home/presentation/components/sliver_tab_bar/sliver_tab_bar_scrollable_child_with_fab.dart';
 import 'package:flutter/material.dart';
@@ -17,16 +18,35 @@ class SuppliersView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<SuplliersCubit>(
       create: (context) => SuplliersCubit(),
-      child: SliverTabBarScrollableChildWithFab(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => sheetBuilder(context, _builderOfSheetBuilder),
-          tooltip: "إضافة مورد",
-          child: const Icon(Icons.add),
+      child: _ScreenView(name: name),
+    );
+  }
+}
+
+class _ScreenView extends StatelessWidget {
+  const _ScreenView({
+    Key? key,
+    required this.name,
+  }) : super(key: key);
+
+  final String name;
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverTabBarScrollableChildWithFab(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => sheetBuilder(
+          context,
+          (contxt) => BlocProvider.value(
+              value: BlocProvider.of<SuplliersCubit>(context),
+              child: _builderOfSheetBuilder(contxt)),
         ),
-        child: SliverTabBarScrollableChild(
-          name: name,
-          child: const _LogicBuilder(),
-        ),
+        tooltip: "إضافة مورد",
+        child: const Icon(Icons.add),
+      ),
+      child: SliverTabBarScrollableChild(
+        name: name,
+        child: const _LogicBuilder(),
       ),
     );
   }
@@ -93,9 +113,12 @@ Widget _builderOfSheetBuilder(BuildContext context) => Padding(
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: SingleChildScrollView(
         controller: ModalScrollController.of(context),
-        child: const Padding(
-          padding: EdgeInsets.all(16.0),
-          child: _AddSupplierForm(),
+        child: BlocProvider<SuppliersAddCubit>(
+          create: (context) => SuppliersAddCubit(),
+          child: const Padding(
+            padding: EdgeInsets.all(16.0),
+            child: _AddSupplierForm(),
+          ),
         ),
       ),
     );
@@ -148,8 +171,10 @@ class _AddSupplierFormState extends State<_AddSupplierForm> {
         phoneNumber: _phoneController.text,
         address: _addressController.text,
         notes: _noteController.text);
-    DbSupplierTable().insert(model).then((value) {
-      debugPrint('$value');
+
+    BlocProvider.of<SuppliersAddCubit>(context).addData(model).then((v) {
+      BlocProvider.of<SuplliersCubit>(context).getData();
+      Navigator.of(context).pop();
     });
   }
 
