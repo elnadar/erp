@@ -18,11 +18,21 @@ class DbSupplierTable {
     return model;
   }
 
+  listRows() async {
+    final db = await _db;
+
+    List<Map> maps = await db.query(_tableName, columns: SupplierModel.columns);
+    if (maps.isNotEmpty) {
+      return SupplierModel.fromMap(maps.first as Map<String, dynamic>);
+    }
+    return null;
+  }
+
   getSupplier(int id) async {
     final db = await _db;
 
     List<Map> maps = await db.query(_tableName,
-        columns: SupplierModel.columns, where: 'id = ?', whereArgs: [id]);
+        columns: SupplierModel.columns, where: '_id = ?', whereArgs: [id]);
     if (maps.isNotEmpty) {
       return SupplierModel.fromMap(maps.first as Map<String, dynamic>);
     }

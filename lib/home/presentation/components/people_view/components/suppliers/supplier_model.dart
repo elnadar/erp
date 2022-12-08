@@ -5,41 +5,41 @@ class SupplierModel {
   final String name;
   final String? phoneNumber;
   final String? address;
-  final String? note;
+  final String? notes;
   SupplierModel({
     this.id,
     required this.name,
     this.phoneNumber,
     this.address,
-    this.note,
+    this.notes,
   });
 
   static List<String> get columns =>
-      ['id', 'name', 'phone_number', 'address', 'note'];
+      ['_id', 'name', 'phone_number', 'address', 'notes'];
 
   SupplierModel copyWith({
     int? id,
     String? name,
     String? phoneNumber,
     String? address,
-    String? note,
+    String? notes,
   }) {
     return SupplierModel(
       id: id ?? this.id,
       name: name ?? this.name,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       address: address ?? this.address,
-      note: note ?? this.note,
+      notes: notes ?? this.notes,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
+      '_id': id,
       'name': name,
       'phone_number': phoneNumber,
       'address': address,
-      'note': note,
+      'notes': notes,
     };
   }
 
@@ -48,18 +48,18 @@ class SupplierModel {
       'name': name,
       'phone_number': phoneNumber,
       'address': address,
-      'note': note,
+      'notes': notes,
     };
   }
 
   factory SupplierModel.fromMap(Map<String, dynamic> map) {
     return SupplierModel(
-      id: map['id'] as int,
+      id: map['_id'] as int,
       name: map['name'] as String,
       phoneNumber:
           map['phone_number'] != null ? map['phone_number'] as String : null,
       address: map['address'] != null ? map['address'] as String : null,
-      note: map['note'] != null ? map['note'] as String : null,
+      notes: map['notes'] != null ? map['notes'] as String : null,
     );
   }
 
@@ -70,7 +70,7 @@ class SupplierModel {
 
   @override
   String toString() {
-    return 'SupplierModel(id: $id, name: $name, phoneNumber: $phoneNumber, address: $address, note: $note)';
+    return 'SupplierModel(id: $id, name: $name, phoneNumber: $phoneNumber, address: $address, notes: $notes)';
   }
 
   @override
@@ -81,7 +81,7 @@ class SupplierModel {
         other.name == name &&
         other.phoneNumber == phoneNumber &&
         other.address == address &&
-        other.note == note;
+        other.notes == notes;
   }
 
   @override
@@ -90,6 +90,6 @@ class SupplierModel {
         name.hashCode ^
         phoneNumber.hashCode ^
         address.hashCode ^
-        note.hashCode;
+        notes.hashCode;
   }
 }

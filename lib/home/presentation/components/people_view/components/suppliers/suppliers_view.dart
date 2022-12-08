@@ -111,7 +111,7 @@ class _AddSupplierFormState extends State<_AddSupplierForm> {
         name: _nameController.text,
         phoneNumber: _phoneController.text,
         address: _addressController.text,
-        note: _noteController.text);
+        notes: _noteController.text);
     DbSupplierTable().insert(model).then((value) {
       debugPrint('$value');
     });
