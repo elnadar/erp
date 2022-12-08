@@ -138,6 +138,7 @@ class _AddSupplierFormState extends State<_AddSupplierForm> {
       _phoneController,
       _addressController,
       _noteController;
+  late final SuppliersAddCubit _cubit;
 
   @override
   void initState() {
@@ -146,6 +147,7 @@ class _AddSupplierFormState extends State<_AddSupplierForm> {
     _phoneController = TextEditingController();
     _addressController = TextEditingController();
     _noteController = TextEditingController();
+    _cubit = BlocProvider.of<SuppliersAddCubit>(context);
     super.initState();
   }
 
@@ -156,6 +158,7 @@ class _AddSupplierFormState extends State<_AddSupplierForm> {
     _phoneController.dispose();
     _addressController.dispose();
     _noteController.dispose();
+    _cubit.close();
     super.dispose();
   }
 
@@ -172,7 +175,7 @@ class _AddSupplierFormState extends State<_AddSupplierForm> {
         address: _addressController.text,
         notes: _noteController.text);
 
-    BlocProvider.of<SuppliersAddCubit>(context).addData(model).then((v) {
+    _cubit.addData(model).then((v) {
       BlocProvider.of<SuplliersCubit>(context).getData();
       Navigator.of(context).pop();
     });
