@@ -1,7 +1,9 @@
 import 'package:erp/components/custom_buttons.dart';
+import 'package:erp/components/custom_text.dart';
+import 'package:erp/home/presentation/components/people_view/components/suppliers/supplier_model.dart';
+import 'package:erp/home/presentation/components/people_view/components/suppliers/suppliers_db.dart';
 import 'package:erp/home/presentation/components/sliver_tab_bar/sliver_tab_bar_scrollable_child.dart';
 import 'package:erp/home/presentation/components/sliver_tab_bar/sliver_tab_bar_scrollable_child_with_fab.dart';
-import 'package:erp/utils/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
@@ -73,16 +75,28 @@ class _AddSupplierForm extends StatefulWidget {
 
 class _AddSupplierFormState extends State<_AddSupplierForm> {
   late final GlobalKey<FormState> _formKey;
+  late final TextEditingController _nameController,
+      _phoneController,
+      _addressController,
+      _noteController;
 
   @override
   void initState() {
     _formKey = GlobalKey<FormState>();
+    _nameController = TextEditingController();
+    _phoneController = TextEditingController();
+    _addressController = TextEditingController();
+    _noteController = TextEditingController();
     super.initState();
   }
 
   @override
   void dispose() {
     _formKey.currentState?.dispose();
+    _nameController.dispose();
+    _phoneController.dispose();
+    _addressController.dispose();
+    _noteController.dispose();
     super.dispose();
   }
 
@@ -92,26 +106,46 @@ class _AddSupplierFormState extends State<_AddSupplierForm> {
     super.deactivate();
   }
 
+  void _submit() {
+    SupplierModel model = SupplierModel(
+        name: _nameController.text,
+        phoneNumber: _phoneController.text,
+        address: _addressController.text,
+        note: _noteController.text);
+    DbSupplierTable().insert(model).then((value) {
+      debugPrint('$value');
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return Form(
       key: _formKey,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          CustomText(
+            'إضافة مُوَرِد',
+            textStyle: theme.textTheme.headlineSmall,
+          ),
+          const SizedBox(height: 22),
           TextFormField(
+            controller: _nameController,
             decoration: const InputDecoration(labelText: "اسم المورد"),
             keyboardType: TextInputType.name,
             textInputAction: TextInputAction.next,
           ),
           const SizedBox(height: 16),
           TextFormField(
+            controller: _phoneController,
             decoration: const InputDecoration(labelText: "رقم الهاتف"),
             keyboardType: TextInputType.phone,
             textInputAction: TextInputAction.next,
           ),
           const SizedBox(height: 16),
           TextFormField(
+            controller: _addressController,
             decoration: const InputDecoration(labelText: "العنوان"),
             keyboardType: TextInputType.streetAddress,
             textInputAction: TextInputAction.next,
@@ -120,6 +154,7 @@ class _AddSupplierFormState extends State<_AddSupplierForm> {
           TextFormField(
             minLines: 3,
             maxLines: 5,
+            controller: _noteController,
             keyboardType: TextInputType.multiline,
             textInputAction: TextInputAction.newline,
             decoration: const InputDecoration(
@@ -131,7 +166,7 @@ class _AddSupplierFormState extends State<_AddSupplierForm> {
           SizedBox(
             width: double.infinity,
             child: FilledButton(
-              onPressed: () {},
+              onPressed: _submit,
               child: const Text("إضافة المورد"),
             ),
           ),
