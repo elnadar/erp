@@ -8,7 +8,9 @@ class _SupplierTile extends StatelessWidget {
 
   final SupplierModel model;
 
-  void _submit() {}
+  // void _submit() {
+  //   context.push();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class _SupplierTile extends StatelessWidget {
       key: ValueKey('SupplierId_${model.id}'),
       title: Text(model.name),
       subtitle: Text(model.phoneNumber ?? ""),
-      onTap: _submit,
+      onTap: () => context.push('/info/supplier_info/${model.id}'),
     );
   }
 }

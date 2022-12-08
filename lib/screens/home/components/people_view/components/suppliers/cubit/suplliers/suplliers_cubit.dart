@@ -11,12 +11,12 @@ class SuplliersCubit extends Cubit<SuplliersState> {
     getData();
   }
   List<SupplierModel> suppliersList = [];
-  final DbSupplierTable table = DbSupplierTable();
+  final DbSupplierTable _table = DbSupplierTable();
 
   Future<void> getData() async {
     emit(SuplliersLoading());
     try {
-      suppliersList = await table.listRows() ?? [];
+      suppliersList = await _table.listRows() ?? [];
       if (suppliersList.isEmpty) {
         emit(SuplliersNoDataFound());
       } else {
