@@ -11,8 +11,8 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 import 'data/supplier_model.dart';
 
-part 'parts/_logc_builder/logic_builder.dart';
-part 'parts/_logc_builder/supplier_tile.dart';
+part 'parts/logc_builder/logic_builder.dart';
+part 'parts/logc_builder/supplier_tile.dart';
 part 'parts/bottom_sheet/bottom_sheet_builder.dart';
 part 'parts/bottom_sheet/bottom_sheet_form.dart';
 
