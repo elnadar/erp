@@ -8,7 +8,7 @@ class SliverTabBarScrollableChildWithFab extends StatelessWidget {
       required this.floatingActionButton,
       this.fabMargins});
   final SliverTabBarScrollableChild child;
-  final Widget floatingActionButton;
+  final FloatingActionButton floatingActionButton;
   final EdgeInsetsGeometry? fabMargins;
   @override
   Widget build(BuildContext context) {
