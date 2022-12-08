@@ -1,12 +1,12 @@
-part of 'suppliers_push_cubit.dart';
+part of 'suppliers_add_cubit.dart';
 
 @immutable
-abstract class SuppliersPushState {}
+abstract class SuppliersAddState {}
 
-class SuppliersPushInitial extends SuppliersPushState {}
+class SuppliersAddInitial extends SuppliersAddState {}
 
-class SuplliersPushingDataLoading extends SuppliersPushState {}
+class SuplliersAddingDataLoading extends SuppliersAddState {}
 
-class SuplliersPushingDataDone extends SuppliersPushState {}
+class SuplliersAddingDataDone extends SuppliersAddState {}
 
-class SuplliersPushingDataError extends SuppliersPushState {}
+class SuplliersAddingDataError extends SuppliersAddState {}
