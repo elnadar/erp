@@ -23,7 +23,7 @@ class SuppliersView extends StatelessWidget {
   }
 }
 
-class _ScreenView extends StatelessWidget {
+class _ScreenView extends StatefulWidget {
   const _ScreenView({
     Key? key,
     required this.name,
@@ -32,20 +32,37 @@ class _ScreenView extends StatelessWidget {
   final String name;
 
   @override
+  State<_ScreenView> createState() => _ScreenViewState();
+}
+
+class _ScreenViewState extends State<_ScreenView> {
+  late final SuplliersCubit _cubit;
+  @override
+  void initState() {
+    _cubit = BlocProvider.of<SuplliersCubit>(context);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _cubit.close();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SliverTabBarScrollableChildWithFab(
       floatingActionButton: FloatingActionButton(
         onPressed: () => sheetBuilder(
           context,
           (contxt) => BlocProvider.value(
-              value: BlocProvider.of<SuplliersCubit>(context),
-              child: _builderOfSheetBuilder(contxt)),
+              value: _cubit, child: _builderOfSheetBuilder(contxt)),
         ),
         tooltip: "إضافة مورد",
         child: const Icon(Icons.add),
       ),
       child: SliverTabBarScrollableChild(
-        name: name,
+        name: widget.name,
         child: const _LogicBuilder(),
       ),
     );
