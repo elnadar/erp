@@ -3,8 +3,8 @@
     "version": "2.2.11",
     "width": 5000,
     "height": 5000,
-    "scrollTop": 0,
-    "scrollLeft": 0,
+    "scrollTop": -604,
+    "scrollLeft": -829,
     "zoomLevel": 1,
     "show": {
       "tableComment": true,
@@ -49,7 +49,7 @@
           {
             "name": "id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": true,
@@ -164,7 +164,7 @@
           {
             "name": "supplier_id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -189,7 +189,7 @@
           "active": false,
           "left": 608,
           "top": 7.5,
-          "zIndex": 629,
+          "zIndex": 22,
           "widthName": 60,
           "widthComment": 60
         },
@@ -203,7 +203,7 @@
           {
             "name": "id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": true,
@@ -297,7 +297,7 @@
           "active": false,
           "left": 43,
           "top": 699,
-          "zIndex": 645,
+          "zIndex": 29,
           "widthName": 60,
           "widthComment": 60
         },
@@ -311,7 +311,7 @@
           {
             "name": "id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": true,
@@ -403,7 +403,7 @@
           {
             "name": "is_from_employee",
             "comment": "",
-            "dataType": "",
+            "dataType": "BOOL",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -426,7 +426,7 @@
           {
             "name": "employee_id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -449,7 +449,7 @@
           {
             "name": "customer_id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -472,7 +472,7 @@
           {
             "name": "type_id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -495,7 +495,7 @@
           {
             "name": "sec_employee_id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -520,7 +520,7 @@
           "active": false,
           "left": 1112.5,
           "top": 1109.6667,
-          "zIndex": 619,
+          "zIndex": 68,
           "widthName": 60,
           "widthComment": 60
         },
@@ -534,7 +534,7 @@
           {
             "name": "id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": true,
@@ -557,7 +557,7 @@
           {
             "name": "product_id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -580,7 +580,7 @@
           {
             "name": "material_id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -651,7 +651,7 @@
           "active": false,
           "left": 40.5,
           "top": 18.1667,
-          "zIndex": 635,
+          "zIndex": 19,
           "widthName": 60,
           "widthComment": 60
         },
@@ -665,7 +665,7 @@
           {
             "name": "id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": true,
@@ -780,7 +780,7 @@
           {
             "name": "type_id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -805,7 +805,7 @@
           "active": false,
           "left": 1705,
           "top": 634.6667,
-          "zIndex": 607,
+          "zIndex": 53,
           "widthName": 66.30810546875,
           "widthComment": 60
         },
@@ -819,7 +819,7 @@
           {
             "name": "id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": true,
@@ -911,7 +911,7 @@
           {
             "name": "type_id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -936,7 +936,7 @@
           "active": false,
           "left": 1754.7223,
           "top": 1133.5004,
-          "zIndex": 621,
+          "zIndex": 56,
           "widthName": 64.84814453125,
           "widthComment": 60
         },
@@ -950,7 +950,7 @@
           {
             "name": "id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": true,
@@ -1067,7 +1067,7 @@
           "active": false,
           "left": 1164,
           "top": 92.5,
-          "zIndex": 594,
+          "zIndex": 35,
           "widthName": 60,
           "widthComment": 60
         },
@@ -1081,7 +1081,7 @@
           {
             "name": "id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": true,
@@ -1129,7 +1129,7 @@
           "active": false,
           "left": 1173.4443,
           "top": 722.2222,
-          "zIndex": 611,
+          "zIndex": 41,
           "widthName": 94.4853515625,
           "widthComment": 60
         },
@@ -1143,7 +1143,7 @@
           {
             "name": "id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": true,
@@ -1166,7 +1166,7 @@
           {
             "name": "material_id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -1189,7 +1189,7 @@
           {
             "name": "product_id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -1237,7 +1237,7 @@
           "active": false,
           "left": 265,
           "top": 419,
-          "zIndex": 640,
+          "zIndex": 26,
           "widthName": 100.26806640625,
           "widthComment": 120
         },
@@ -1251,7 +1251,7 @@
           {
             "name": "id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": true,
@@ -1299,7 +1299,7 @@
           "active": false,
           "left": 1687.5001,
           "top": 289.7779,
-          "zIndex": 603,
+          "zIndex": 50,
           "widthName": 94.49169921875,
           "widthComment": 60
         },
@@ -1313,7 +1313,7 @@
           {
             "name": "id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": true,
@@ -1361,7 +1361,7 @@
           "active": false,
           "left": 1768,
           "top": 1393,
-          "zIndex": 622,
+          "zIndex": 66,
           "widthName": 99.53173828125,
           "widthComment": 60
         },
@@ -1375,7 +1375,7 @@
           {
             "name": "id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": true,
@@ -1423,7 +1423,7 @@
           "active": false,
           "left": 1133,
           "top": 930,
-          "zIndex": 620,
+          "zIndex": 44,
           "widthName": 85.814453125,
           "widthComment": 60
         },
@@ -1438,7 +1438,7 @@
           "active": false,
           "left": 2672.5,
           "top": 735.6667,
-          "zIndex": 577,
+          "zIndex": 1,
           "widthName": 60,
           "widthComment": 60
         },
@@ -1452,7 +1452,7 @@
           {
             "name": "id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": true,
@@ -1475,7 +1475,7 @@
           {
             "name": "payment_id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -1498,7 +1498,7 @@
           {
             "name": "income_id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -1521,7 +1521,7 @@
           {
             "name": "material_id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -1544,7 +1544,7 @@
           {
             "name": "product_id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -1592,7 +1592,7 @@
           "active": false,
           "left": 599.5,
           "top": 794.5,
-          "zIndex": 674,
+          "zIndex": 32,
           "widthName": 60,
           "widthComment": 60
         },
@@ -1606,7 +1606,7 @@
           {
             "name": "id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": true,
@@ -1744,7 +1744,7 @@
           {
             "name": "employee_id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -1767,7 +1767,7 @@
           {
             "name": "sec_employee_id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -1790,7 +1790,7 @@
           {
             "name": "supplier_id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -1813,7 +1813,7 @@
           {
             "name": "type_id",
             "comment": "",
-            "dataType": "INT",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -1838,7 +1838,7 @@
           "active": false,
           "left": 1141.5,
           "top": 371.1667,
-          "zIndex": 595,
+          "zIndex": 38,
           "widthName": 60,
           "widthComment": 60
         },
