@@ -17,5 +17,7 @@ class SuplliersNoDataFound extends SuplliersState {}
 
 class SuplliersGettingDataError extends SuplliersState {
   final String error;
-  SuplliersGettingDataError(this.error);
+  SuplliersGettingDataError(this.error) {
+    debugPrint(error);
+  }
 }
