@@ -1,4 +1,4 @@
-import 'package:erp/home/presentation/components/people_view/components/suppliers/supplier_model.dart';
+import 'package:erp/home/presentation/components/people_view/components/suppliers/data/supplier_model.dart';
 import 'package:erp/utils/database/init.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -20,10 +20,14 @@ class DbSupplierTable {
 
   listRows() async {
     final db = await _db;
-
+    List<SupplierModel> suppliersList = [];
     List<Map> maps = await db.query(_tableName, columns: SupplierModel.columns);
     if (maps.isNotEmpty) {
-      return SupplierModel.fromMap(maps.first as Map<String, dynamic>);
+      for (final Map<String, dynamic> map
+          in maps as List<Map<String, dynamic>>) {
+        suppliersList.add(SupplierModel.fromMap(map));
+      }
+      return suppliersList;
     }
     return null;
   }
