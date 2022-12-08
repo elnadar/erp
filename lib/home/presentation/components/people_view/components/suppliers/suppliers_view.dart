@@ -71,7 +71,7 @@ class _LogicBuilder extends StatelessWidget {
           return const SliverFillRemaining(
             child: Center(
               child: Text(
-                  'لا يوجد موردون حاليا، قم ضافة موردون بالضغط على الزر +'),
+                  'لا يوجد موردين حاليًا، قم بالضغط على زر + لإضافة مورد جديد.'),
             ),
           );
         }
