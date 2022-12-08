@@ -9,4 +9,9 @@ class SuplliersAddingDataLoading extends SuppliersAddState {}
 
 class SuplliersAddingDataDone extends SuppliersAddState {}
 
-class SuplliersAddingDataError extends SuppliersAddState {}
+class SuplliersAddingDataError extends SuppliersAddState {
+  final String error;
+  SuplliersAddingDataError(this.error) {
+    debugPrint(error);
+  }
+}
