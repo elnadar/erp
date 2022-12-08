@@ -1,4 +1,4 @@
-import 'package:erp/home/controllers/menu_bar_icon/menu_bar_icon_cubit.dart';
+import 'package:erp/screens/home/controllers/menu_bar_icon/menu_bar_icon_cubit.dart';
 import 'package:erp/utils/localization/ar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

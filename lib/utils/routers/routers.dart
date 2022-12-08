@@ -1,8 +1,8 @@
-import 'package:erp/auth/presentation/screens/login_screen.dart';
-import 'package:erp/home/components/bill_screen.dart';
-import 'package:erp/home/controllers/bottom_nav_bar/bottom_nav_bar_cubit.dart';
-import 'package:erp/home/controllers/menu_bar_icon/menu_bar_icon_cubit.dart';
-import 'package:erp/home/home_screen.dart';
+import 'package:erp/screens/auth/presentation/screens/login_screen.dart';
+import 'package:erp/screens/home/components/bill_screen.dart';
+import 'package:erp/screens/home/controllers/bottom_nav_bar/bottom_nav_bar_cubit.dart';
+import 'package:erp/screens/home/controllers/menu_bar_icon/menu_bar_icon_cubit.dart';
+import 'package:erp/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';

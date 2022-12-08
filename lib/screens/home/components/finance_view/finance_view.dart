@@ -1,4 +1,4 @@
-import 'package:erp/home/components/menu_bar_icon/menu_bar_icon.dart';
+import 'package:erp/screens/home/components/menu_bar_icon/menu_bar_icon.dart';
 import 'package:erp/utils/localization/ar.dart';
 import 'package:flutter/material.dart';
 

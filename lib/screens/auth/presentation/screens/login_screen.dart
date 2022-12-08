@@ -1,5 +1,5 @@
-import 'package:erp/auth/presentation/components/auth_header.dart';
 import 'package:erp/components/text_weights.dart';
+import 'package:erp/screens/auth/presentation/components/auth_header.dart';
 import 'package:erp/utils/localization/ar.dart';
 import 'package:flutter/material.dart';
 
