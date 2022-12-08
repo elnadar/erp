@@ -1,6 +1,6 @@
 import 'package:erp/components/custom_buttons.dart';
 import 'package:erp/components/custom_text.dart';
-import 'package:erp/home/presentation/components/people_view/components/suppliers/cubit/suplliers_cubit.dart';
+import 'package:erp/home/presentation/components/people_view/components/suppliers/cubit/suplliers/suplliers_cubit.dart';
 import 'package:erp/home/presentation/components/sliver_tab_bar/sliver_tab_bar_scrollable_child.dart';
 import 'package:erp/home/presentation/components/sliver_tab_bar/sliver_tab_bar_scrollable_child_with_fab.dart';
 import 'package:flutter/material.dart';
@@ -15,16 +15,16 @@ class SuppliersView extends StatelessWidget {
   final String name;
   @override
   Widget build(BuildContext context) {
-    return SliverTabBarScrollableChildWithFab(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => sheetBuilder(context, _builderOfSheetBuilder),
-        tooltip: "إضافة مورد",
-        child: const Icon(Icons.add),
-      ),
-      child: SliverTabBarScrollableChild(
-        name: name,
-        child: BlocProvider<SuplliersCubit>(
-          create: (context) => SuplliersCubit(),
+    return BlocProvider<SuplliersCubit>(
+      create: (context) => SuplliersCubit(),
+      child: SliverTabBarScrollableChildWithFab(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => sheetBuilder(context, _builderOfSheetBuilder),
+          tooltip: "إضافة مورد",
+          child: const Icon(Icons.add),
+        ),
+        child: SliverTabBarScrollableChild(
+          name: name,
           child: const _LogicBuilder(),
         ),
       ),
