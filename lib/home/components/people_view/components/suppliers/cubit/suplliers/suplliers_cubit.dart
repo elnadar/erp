@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:erp/home/presentation/components/people_view/components/suppliers/data/supplier_model.dart';
-import 'package:erp/home/presentation/components/people_view/components/suppliers/data/suppliers_db.dart';
+import 'package:erp/home/components/people_view/components/suppliers/data/supplier_model.dart';
+import 'package:erp/home/components/people_view/components/suppliers/data/suppliers_db.dart';
 import 'package:flutter/foundation.dart';
 import 'package:meta/meta.dart';
 

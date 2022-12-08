@@ -1,14 +1,14 @@
 import 'package:erp/components/custom_buttons.dart';
 import 'package:erp/components/custom_text.dart';
 import 'package:erp/components/sheet_builder.dart';
-import 'package:erp/home/presentation/components/people_view/components/suppliers/cubit/suplliers/suplliers_cubit.dart';
-import 'package:erp/home/presentation/components/people_view/components/suppliers/cubit/suppliers_add/suppliers_add_cubit.dart';
-import 'package:erp/home/presentation/components/sliver_tab_bar/sliver_tab_bar_scrollable_child.dart';
-import 'package:erp/home/presentation/components/sliver_tab_bar/sliver_tab_bar_scrollable_child_with_fab.dart';
+import 'package:erp/home/components/sliver_tab_bar/sliver_tab_bar_scrollable_child.dart';
+import 'package:erp/home/components/sliver_tab_bar/sliver_tab_bar_scrollable_child_with_fab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
+import 'cubit/suplliers/suplliers_cubit.dart';
+import 'cubit/suppliers_add/suppliers_add_cubit.dart';
 import 'data/supplier_model.dart';
 
 part 'parts/logc_builder/logic_builder.dart';

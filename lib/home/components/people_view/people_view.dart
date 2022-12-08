@@ -1,8 +1,9 @@
-import 'package:erp/home/presentation/components/menu_bar_icon/menu_bar_icon.dart';
-import 'package:erp/home/presentation/components/people_view/components/suppliers/suppliers_view.dart';
-import 'package:erp/home/presentation/components/prouducts_view/components/materials_view/materials_view.dart';
-import 'package:erp/home/presentation/components/sliver_tab_bar/sliver_tab_bar.dart';
+import 'package:erp/home/components/menu_bar_icon/menu_bar_icon.dart';
+import 'package:erp/home/components/prouducts_view/components/materials_view/materials_view.dart';
+import 'package:erp/home/components/sliver_tab_bar/sliver_tab_bar.dart';
 import 'package:flutter/material.dart';
+
+import 'components/suppliers/suppliers_view.dart';
 
 class PeopleView extends StatelessWidget {
   const PeopleView({super.key});

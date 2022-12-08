@@ -1,6 +1,7 @@
-import 'package:erp/home/presentation/components/people_view/components/suppliers/data/supplier_model.dart';
 import 'package:erp/utils/database/init.dart';
 import 'package:sqflite/sqflite.dart';
+
+import 'supplier_model.dart';
 
 class DbSupplierTable {
   static const String _tableName = 'Suppliers';
