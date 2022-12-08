@@ -4,6 +4,9 @@ import 'package:path/path.dart';
 
 class DbProvider {
   Database? _database;
+  DbProvider._sharedInstance();
+  static final DbProvider _shared = DbProvider._sharedInstance();
+  factory DbProvider() => _shared;
 
   Future<Database> get database async {
     if (_database != null) return _database!;
@@ -16,7 +19,7 @@ class DbProvider {
     final dbPath = await getDatabasesPath();
     final path = join(dbPath, filePath);
 
-    return await openDatabase(path, version: 1, onCreate: _createDB);
+    return openDatabase(path, version: 1, onCreate: _createDB);
   }
 
   Future _createDB(Database db, int version) async {
