@@ -19,9 +19,3 @@ class SuplliersGettingDataError extends SuplliersState {
   final String error;
   SuplliersGettingDataError(this.error);
 }
-
-class SuplliersPushingDataLoading extends SuplliersState {}
-
-class SuplliersPushingDataDone extends SuplliersState {}
-
-class SuplliersPushingDataError extends SuplliersState {}
