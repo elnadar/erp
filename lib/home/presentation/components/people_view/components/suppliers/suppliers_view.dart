@@ -1,11 +1,14 @@
 import 'package:erp/components/custom_buttons.dart';
 import 'package:erp/components/custom_text.dart';
-import 'package:erp/home/presentation/components/people_view/components/suppliers/supplier_model.dart';
-import 'package:erp/home/presentation/components/people_view/components/suppliers/suppliers_db.dart';
+import 'package:erp/home/presentation/components/people_view/components/suppliers/cubit/suplliers_cubit.dart';
 import 'package:erp/home/presentation/components/sliver_tab_bar/sliver_tab_bar_scrollable_child.dart';
 import 'package:erp/home/presentation/components/sliver_tab_bar/sliver_tab_bar_scrollable_child_with_fab.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+
+import 'data/supplier_model.dart';
+import 'data/suppliers_db.dart';
 
 class SuppliersView extends StatelessWidget {
   const SuppliersView({super.key, required this.name});
@@ -20,20 +23,53 @@ class SuppliersView extends StatelessWidget {
       ),
       child: SliverTabBarScrollableChild(
         name: name,
-        child: SliverList(
+        child: BlocProvider<SuplliersCubit>(
+          create: (context) => SuplliersCubit(),
+          child: const _LogicBuilder(),
+        ),
+      ),
+    );
+  }
+}
+
+class _LogicBuilder extends StatelessWidget {
+  const _LogicBuilder({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SuplliersCubit, SuplliersState>(
+      builder: (context, state) {
+        if (state is SuplliersLoading) {
+          return const SliverFillRemaining(
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        } else if (state is SuplliersNoDataFound) {
+          return const SliverFillRemaining(
+            child: Center(
+              child: Text(
+                  'لا يوجد موردون حاليا، قم ضافة موردون بالضغط على الزر +'),
+            ),
+          );
+        }
+        final List<SupplierModel> data = (state as SuplliersData).data;
+        return SliverList(
           delegate: SliverChildBuilderDelegate(
             (BuildContext context, int index) {
+              final SupplierModel model = data[index];
               return ListTile(
-                title: const Text("أحمد بتاع الخيار"),
-                subtitle: const Text("اخر تعديل الساعة 15"),
-                trailing: const Text("25ج"),
+                title: Text(model.name),
+                subtitle: Text(model.phoneNumber ?? ""),
                 onTap: () {},
               );
             },
-            childCount: 30,
+            childCount: data.length,
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
