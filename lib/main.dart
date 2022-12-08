@@ -1,9 +1,10 @@
-import 'package:erp/home/presentation/components/people_view/components/suppliers/suppliers_db.dart';
 import 'package:erp/utils/routers/routers.dart';
 import 'package:erp/utils/theme/colors.dart';
 import 'package:erp/utils/theme/reusable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+
+import 'home/presentation/components/people_view/components/suppliers/data/suppliers_db.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
