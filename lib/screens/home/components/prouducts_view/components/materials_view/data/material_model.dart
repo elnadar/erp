@@ -17,14 +17,14 @@ WeightUnits getWeightUnitEnum(String str) {
   return WeightUnits.none;
 }
 
-class MaterialsModel {
+class MaterialModel {
   final int? id;
   final String name;
   final double quantity;
   final WeightUnits? measurement;
   final String? notes;
   final int? supplierId;
-  MaterialsModel({
+  MaterialModel({
     this.id,
     required this.name,
     required this.quantity,
@@ -41,7 +41,7 @@ class MaterialsModel {
         'notes',
         'supplierId',
       ];
-  MaterialsModel copyWith({
+  MaterialModel copyWith({
     int? id,
     String? name,
     double? quantity,
@@ -49,7 +49,7 @@ class MaterialsModel {
     String? notes,
     int? supplierId,
   }) {
-    return MaterialsModel(
+    return MaterialModel(
       id: id ?? this.id,
       name: name ?? this.name,
       quantity: quantity ?? this.quantity,
@@ -80,8 +80,8 @@ class MaterialsModel {
     };
   }
 
-  factory MaterialsModel.fromMap(Map<String, dynamic> map) {
-    return MaterialsModel(
+  factory MaterialModel.fromMap(Map<String, dynamic> map) {
+    return MaterialModel(
       id: map['_id'] != null ? map['_id'] as int : null,
       name: map['name'] as String,
       quantity: map['quantity'] as double,
@@ -95,8 +95,8 @@ class MaterialsModel {
 
   String toJson() => json.encode(toMap());
 
-  factory MaterialsModel.fromJson(String source) =>
-      MaterialsModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory MaterialModel.fromJson(String source) =>
+      MaterialModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
@@ -104,7 +104,7 @@ class MaterialsModel {
   }
 
   @override
-  bool operator ==(covariant MaterialsModel other) {
+  bool operator ==(covariant MaterialModel other) {
     if (identical(this, other)) return true;
 
     return other.id == id &&

@@ -1,7 +1,7 @@
 import 'package:erp/utils/database/init.dart';
 import 'package:sqflite/sqflite.dart';
 
-import 'materials_model.dart';
+import 'material_model.dart';
 
 class DbMaterialsTable {
   static const String _tableName = 'Materials';
@@ -13,7 +13,7 @@ class DbMaterialsTable {
     return await DbProvider().database;
   }
 
-  insert(MaterialsModel model) async {
+  insert(MaterialModel model) async {
     final db = await _db;
     model.copyWith(id: await db.insert(_tableName, model.toSqlInsert()));
     return model;
@@ -21,13 +21,12 @@ class DbMaterialsTable {
 
   listRows() async {
     final db = await _db;
-    List<MaterialsModel> materialsList = [];
-    List<Map> maps =
-        await db.query(_tableName, columns: MaterialsModel.columns);
+    List<MaterialModel> materialsList = [];
+    List<Map> maps = await db.query(_tableName, columns: MaterialModel.columns);
     if (maps.isNotEmpty) {
       for (final Map<String, dynamic> map
           in maps as List<Map<String, dynamic>>) {
-        materialsList.add(MaterialsModel.fromMap(map));
+        materialsList.add(MaterialModel.fromMap(map));
       }
       return materialsList;
     }
@@ -38,9 +37,9 @@ class DbMaterialsTable {
     final db = await _db;
 
     List<Map> maps = await db.query(_tableName,
-        columns: MaterialsModel.columns, where: '_id = ?', whereArgs: [id]);
+        columns: MaterialModel.columns, where: '_id = ?', whereArgs: [id]);
     if (maps.isNotEmpty) {
-      return MaterialsModel.fromMap(maps.first as Map<String, dynamic>);
+      return MaterialModel.fromMap(maps.first as Map<String, dynamic>);
     }
     return null;
   }
