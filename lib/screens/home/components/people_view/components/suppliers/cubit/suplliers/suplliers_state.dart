@@ -7,11 +7,7 @@ class SuplliersInitial extends SuplliersState {}
 
 class SuplliersLoading extends SuplliersState {}
 
-class SuplliersData extends SuplliersState {
-  final List<SupplierModel> data;
-
-  SuplliersData(this.data);
-}
+class SuplliersData extends SuplliersState {}
 
 class SuplliersNoDataFound extends SuplliersState {}
 

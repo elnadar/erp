@@ -23,7 +23,7 @@ class _LogicBuilder extends StatelessWidget {
             ),
           );
         }
-        final List<SupplierModel> data = (state as SuplliersData).data;
+        final List<SupplierModel> data = SuppliersList().suppliersList;
         return SliverList(
           delegate: SliverChildBuilderDelegate(
             (BuildContext context, int index) {

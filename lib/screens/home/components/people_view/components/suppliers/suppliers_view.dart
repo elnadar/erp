@@ -1,3 +1,4 @@
+import 'package:erp/screens/home/components/people_view/components/suppliers/data/suppliers_list.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:erp/components/custom_buttons.dart';
