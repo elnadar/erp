@@ -1,6 +1,6 @@
 part of '../../materials_view.dart';
 
-final List<String> lst = ['one', 'two'];
+const List<WeightUnits> _lst = WeightUnits.values;
 
 class _AddMaterialForm extends StatefulWidget {
   const _AddMaterialForm({
@@ -12,7 +12,7 @@ class _AddMaterialForm extends StatefulWidget {
 }
 
 class _AddMaterialFormState extends State<_AddMaterialForm> {
-  String dropdownValue = lst.first;
+  WeightUnits dropdownValue = _lst.first;
   ThemeData get theme => Theme.of(context);
 
   late final GlobalKey<FormState> _formKey;
@@ -65,12 +65,21 @@ class _AddMaterialFormState extends State<_AddMaterialForm> {
             textInputAction: TextInputAction.next,
           ),
           const SizedBox(height: 16),
-          TextFormField(
-            controller: _nameController,
-            decoration: const InputDecoration(labelText: "وحدة القياس"),
-            keyboardType: TextInputType.name,
-            textInputAction: TextInputAction.next,
-          ),
+          StatefulBuilder(builder: (BuildContext context, _) {
+            return DropdownButtonFormField<WeightUnits>(
+                decoration: const InputDecoration(labelText: 'وحدة القياس'),
+                value: dropdownValue,
+                items: _lst
+                    .map<DropdownMenuItem<WeightUnits>>((WeightUnits value) {
+                  return DropdownMenuItem<WeightUnits>(
+                    value: value,
+                    child: Text(getWeightUnitAr(value)),
+                  );
+                }).toList(),
+                onChanged: (val) => setState(() {
+                      dropdownValue = val!;
+                    }));
+          }),
           const SizedBox(height: 16),
           TextFormField(
             controller: _nameController,
@@ -79,7 +88,6 @@ class _AddMaterialFormState extends State<_AddMaterialForm> {
             textInputAction: TextInputAction.next,
           ),
           const SizedBox(height: 16),
-
           TextFormField(
             minLines: 3,
             maxLines: 5,
@@ -99,20 +107,6 @@ class _AddMaterialFormState extends State<_AddMaterialForm> {
               child: const Text("إضافة الخامة"),
             ),
           ),
-
-          // StatefulBuilder(builder: (BuildContext context, _) {
-          //   return DropdownButton(
-          //       value: dropdownValue,
-          //       items: lst.map<DropdownMenuItem<String>>((String value) {
-          //         return DropdownMenuItem<String>(
-          //           value: value,
-          //           child: Text(value),
-          //         );
-          //       }).toList(),
-          //       onChanged: (val) => setState(() {
-          //             dropdownValue = val!;
-          //           }));
-          // })
         ],
       ),
     );

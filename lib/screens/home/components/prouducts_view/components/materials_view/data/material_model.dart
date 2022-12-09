@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-enum WeightUnits { tn, kg, gm, mg, none }
+enum WeightUnits { kg, tn, gm, mg }
 
 WeightUnits getWeightUnitEnum(String str) {
   str = str.toLowerCase();
@@ -11,10 +11,19 @@ WeightUnits getWeightUnitEnum(String str) {
     return WeightUnits.kg;
   } else if (str == "gm") {
     return WeightUnits.gm;
-  } else if (str == "mg") {
-    return WeightUnits.mg;
   }
-  return WeightUnits.none;
+  return WeightUnits.mg;
+}
+
+String getWeightUnitAr(WeightUnits units) {
+  if (units == WeightUnits.tn) {
+    return "طن";
+  } else if (units == WeightUnits.kg) {
+    return "كجم";
+  } else if (units == WeightUnits.gm) {
+    return "جم";
+  }
+  return "ملجم";
 }
 
 class MaterialModel {
