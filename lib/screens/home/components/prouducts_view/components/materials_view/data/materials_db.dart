@@ -34,7 +34,7 @@ class DbMaterialsTable {
     return null;
   }
 
-  getSupplier(int id) async {
+  getMaterial(int id) async {
     final db = await _db;
 
     List<Map> maps = await db.query(_tableName,
