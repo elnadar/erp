@@ -1,13 +1,12 @@
 import 'dart:io';
 
+import 'package:erp/screens/home/components/prouducts_view/components/materials_view/data/materials_model.dart';
 import 'package:erp/utils/routers/routers.dart';
 import 'package:erp/utils/theme/colors.dart';
 import 'package:erp/utils/theme/reusable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
-
-import 'screens/home/components/people_view/components/suppliers/data/suppliers_db.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,8 +15,8 @@ Future<void> main() async {
     sqfliteFfiInit();
   }
 
-  final log = await DbSupplierTable().listRows();
-  debugPrint(log.toString());
+  // final log = await DbSupplierTable().listRows();
+  // debugPrint(log.toString());
 
   runApp(const MyApp());
 }

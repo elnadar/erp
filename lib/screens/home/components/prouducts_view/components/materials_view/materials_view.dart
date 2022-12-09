@@ -1,3 +1,4 @@
+import 'package:erp/components/sheet_builder.dart';
 import 'package:erp/screens/home/components/sliver_tab_bar/sliver_tab_bar_scrollable_child.dart';
 import 'package:erp/screens/home/components/sliver_tab_bar/sliver_tab_bar_scrollable_child_with_fab.dart';
 import 'package:erp/utils/theme/colors.dart';
@@ -11,7 +12,7 @@ class MaterialsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverTabBarScrollableChildWithFab(
       floatingActionButton: FloatingActionButton(
-        onPressed: () => _sheetBuilder(context),
+        onPressed: () => sheetBuilder(context, _builderOfSheetBuilder),
         // onPressed: () => showMaterialsSheet(context),
         tooltip: "إضافة خامة",
         child: const Icon(Icons.add),
@@ -32,13 +33,6 @@ class MaterialsView extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  Future<dynamic> _sheetBuilder(BuildContext context) {
-    return showBarModalBottomSheet(
-      context: context,
-      builder: _builderOfSheetBuilder,
     );
   }
 
