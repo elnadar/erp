@@ -20,20 +20,31 @@ WeightUnits getWeightUnitEnum(String str) {
 class MaterialsModel {
   final int? id;
   final String name;
+  final double quantity;
   final WeightUnits? measurement;
   final String? notes;
   final int? supplierId;
   MaterialsModel({
     this.id,
     required this.name,
+    required this.quantity,
     this.measurement,
     this.notes,
     this.supplierId,
   });
 
+  static List<String> get columns => [
+        '_id',
+        'name',
+        'quantity',
+        'measurement',
+        'notes',
+        'supplierId',
+      ];
   MaterialsModel copyWith({
     int? id,
     String? name,
+    double? quantity,
     WeightUnits? measurement,
     String? notes,
     int? supplierId,
@@ -41,6 +52,7 @@ class MaterialsModel {
     return MaterialsModel(
       id: id ?? this.id,
       name: name ?? this.name,
+      quantity: quantity ?? this.quantity,
       measurement: measurement ?? this.measurement,
       notes: notes ?? this.notes,
       supplierId: supplierId ?? this.supplierId,
@@ -50,6 +62,7 @@ class MaterialsModel {
   Map<String, dynamic> toSqlInsert() {
     return <String, dynamic>{
       'name': name == '' ? null : name,
+      'quantity': quantity,
       'measurement': measurement?.name,
       'notes': notes == '' ? null : notes,
       'supplier_id': supplierId,
@@ -58,23 +71,25 @@ class MaterialsModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
+      '_id': id,
       'name': name,
+      'quantity': quantity,
       'measurement': measurement?.name,
       'notes': notes,
-      'supplier_id': supplierId,
+      'supplierId': supplierId,
     };
   }
 
   factory MaterialsModel.fromMap(Map<String, dynamic> map) {
     return MaterialsModel(
-      id: map['id'] != null ? map['id'] as int : null,
+      id: map['_id'] != null ? map['_id'] as int : null,
       name: map['name'] as String,
+      quantity: map['quantity'] as double,
       measurement: map['measurement'] != null
           ? getWeightUnitEnum(map['measurement'])
           : null,
       notes: map['notes'] != null ? map['notes'] as String : null,
-      supplierId: map['supplier_id'] != null ? map['supplier_id'] as int : null,
+      supplierId: map['supplierId'] != null ? map['supplierId'] as int : null,
     );
   }
 
@@ -85,7 +100,7 @@ class MaterialsModel {
 
   @override
   String toString() {
-    return 'MaterialsModel(id: $id, name: $name, measurement: $measurement, notes: $notes, supplierId: $supplierId)';
+    return 'MaterialsModel(id: $id, name: $name, quantity: $quantity, measurement: $measurement, notes: $notes, supplierId: $supplierId)';
   }
 
   @override
@@ -94,6 +109,7 @@ class MaterialsModel {
 
     return other.id == id &&
         other.name == name &&
+        other.quantity == quantity &&
         other.measurement == measurement &&
         other.notes == notes &&
         other.supplierId == supplierId;
@@ -103,6 +119,7 @@ class MaterialsModel {
   int get hashCode {
     return id.hashCode ^
         name.hashCode ^
+        quantity.hashCode ^
         measurement.hashCode ^
         notes.hashCode ^
         supplierId.hashCode;
