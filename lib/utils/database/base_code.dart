@@ -85,7 +85,7 @@ CREATE TABLE Materials
   quantity    FLOAT   NOT NULL,
   measurement VARCHAR NULL     DEFAULT KG,
   notes       TEXT    NULL    ,
-  supplier_id INTEGER NOT NULL,
+  supplier_id INTEGER NULL,
   PRIMARY KEY (_id AUTOINCREMENT),
   FOREIGN KEY (supplier_id) REFERENCES Suppliers (_id)
 );
