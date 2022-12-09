@@ -21,6 +21,9 @@ dependencies:
   modal_bottom_sheet: ^2.1.2
   sqflite: ^2.2.2
   quickalert: ^1.0.1
+  sqflite_common_ffi: ^2.2.0+1
+  sqlite3_flutter_libs:
+
 
 
 dev_dependencies:

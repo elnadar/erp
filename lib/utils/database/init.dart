@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:erp/utils/database/base_code.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 class DbProvider {
   Database? _database;
@@ -18,10 +21,16 @@ class DbProvider {
   }
 
   Future<Database> _initDB(String filePath) async {
-    final dbPath = await getDatabasesPath();
-    final path = join(dbPath, filePath);
-
-    return openDatabase(path, version: 1, onCreate: _createDB);
+    if (Platform.isAndroid || Platform.isIOS) {
+      final dbPath = await getDatabasesPath();
+      final path = join(dbPath, filePath);
+      return openDatabase(path, version: 1, onCreate: _createDB);
+    } else {
+      var databaseFactory = databaseFactoryFfi;
+      var db = await databaseFactory.openDatabase(inMemoryDatabasePath);
+      await _createDB(db, 1);
+      return db;
+    }
   }
 
   Future listTables() async {
