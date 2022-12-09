@@ -39,7 +39,7 @@ class MaterialModel {
         'quantity',
         'measurement',
         'notes',
-        'supplierId',
+        'supplier_id',
       ];
   MaterialModel copyWith({
     int? id,
@@ -76,7 +76,7 @@ class MaterialModel {
       'quantity': quantity,
       'measurement': measurement?.name,
       'notes': notes,
-      'supplierId': supplierId,
+      'supplier_id': supplierId,
     };
   }
 
@@ -89,7 +89,7 @@ class MaterialModel {
           ? getWeightUnitEnum(map['measurement'])
           : null,
       notes: map['notes'] != null ? map['notes'] as String : null,
-      supplierId: map['supplierId'] != null ? map['supplierId'] as int : null,
+      supplierId: map['supplier_id'] != null ? map['supplier_id'] as int : null,
     );
   }
 
