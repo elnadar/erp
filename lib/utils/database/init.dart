@@ -21,15 +21,15 @@ class DbProvider {
   }
 
   Future<Database> _initDB(String filePath) async {
-    if (Platform.isAndroid || Platform.isIOS) {
-      final dbPath = await getDatabasesPath();
-      final path = join(dbPath, filePath);
-      return openDatabase(path, version: 1, onCreate: _createDB);
-    } else {
+    if (Platform.isWindows || Platform.isLinux) {
       var databaseFactory = databaseFactoryFfi;
       var db = await databaseFactory.openDatabase(inMemoryDatabasePath);
       await _createDB(db, 1);
       return db;
+    } else {
+      final dbPath = await getDatabasesPath();
+      final path = join(dbPath, filePath);
+      return openDatabase(path, version: 1, onCreate: _createDB);
     }
   }
 
