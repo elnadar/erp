@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:erp/screens/home/components/prouducts_view/components/materials_view/data/materials_model.dart';
+import 'package:erp/screens/home/components/prouducts_view/components/materials_view/data/material_model.dart';
 import 'package:erp/utils/routers/routers.dart';
 import 'package:erp/utils/theme/colors.dart';
 import 'package:erp/utils/theme/reusable.dart';
