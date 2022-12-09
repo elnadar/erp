@@ -60,9 +60,9 @@ CREATE TABLE Employees
   salary   INT     NULL    ,
   is_admin BOOL    NOT NULL,
   notes    TEXT    NULL    ,
-  type__id  INTEGER NOT NULL,
+  type_id  INTEGER NOT NULL,
   PRIMARY KEY (_id AUTOINCREMENT),
-  FOREIGN KEY (type__id) REFERENCES EmployeeTypes (_id)
+  FOREIGN KEY (type_id) REFERENCES EmployeeTypes (_id)
 );
 ''',
   '''
@@ -72,9 +72,9 @@ CREATE TABLE Customers
   name         VARCHAR  NOT NULL,
   phone_number CHAR(11) NULL     UNIQUE,
   notes        TEXT     NULL    ,
-  type__id      INTEGER  NOT NULL,
+  type_id      INTEGER  NOT NULL,
   PRIMARY KEY (_id AUTOINCREMENT),
-  FOREIGN KEY (type__id) REFERENCES CustomersTypes (_id)
+  FOREIGN KEY (type_id) REFERENCES CustomersTypes (_id)
 );
 ''',
   '''
@@ -85,25 +85,25 @@ CREATE TABLE Materials
   quantity    FLOAT   NOT NULL,
   measurement VARCHAR NULL     DEFAULT KG,
   notes       TEXT    NULL    ,
-  supplier__id INTEGER NOT NULL,
+  supplier_id INTEGER NOT NULL,
   PRIMARY KEY (_id AUTOINCREMENT),
-  FOREIGN KEY (supplier__id) REFERENCES Suppliers (_id)
+  FOREIGN KEY (supplier_id) REFERENCES Suppliers (_id)
 );
 ''',
   '''
 CREATE TABLE Bills
 (
   _id          INTEGER NOT NULL UNIQUE,
-  payment__id  INTEGER NULL    ,
-  income__id   INTEGER NULL    ,
-  material__id INTEGER NULL    ,
-  product__id  INTEGER NULL    ,
+  payment_id  INTEGER NULL    ,
+  income_id   INTEGER NULL    ,
+  material_id INTEGER NULL    ,
+  product_id  INTEGER NULL    ,
   is_payment  BOOL    NOT NULL,
   PRIMARY KEY (_id AUTOINCREMENT),
-  FOREIGN KEY (payment__id) REFERENCES Payments (_id),
-  FOREIGN KEY (income__id) REFERENCES Incomes (_id),
-  FOREIGN KEY (material__id) REFERENCES Materials (_id),
-  FOREIGN KEY (product__id) REFERENCES Products (_id)
+  FOREIGN KEY (payment_id) REFERENCES Payments (_id),
+  FOREIGN KEY (income_id) REFERENCES Incomes (_id),
+  FOREIGN KEY (material_id) REFERENCES Materials (_id),
+  FOREIGN KEY (product_id) REFERENCES Products (_id)
 );
 ''',
   '''
@@ -115,15 +115,15 @@ CREATE TABLE Payments
   is_for_employee BOOL     NOT NULL,
   is_for_supplier BOOL     NOT NULL,
   notes           TEXT     NULL    ,
-  employee__id     INTEGER  NOT NULL,
-  sec_employee__id INTEGER  NULL    ,
-  supplier__id     INTEGER  NULL    ,
-  type__id         INTEGER  NOT NULL,
+  employee_id     INTEGER  NOT NULL,
+  sec_employee_id INTEGER  NULL    ,
+  supplier_id     INTEGER  NULL    ,
+  type_id         INTEGER  NOT NULL,
   PRIMARY KEY (_id AUTOINCREMENT),
-  FOREIGN KEY (sec_employee__id) REFERENCES Employees (_id),
-  FOREIGN KEY (supplier__id) REFERENCES Suppliers (_id),
-  FOREIGN KEY (type__id) REFERENCES PaymentsTypes (_id),
-  FOREIGN KEY (employee__id) REFERENCES Employees (_id)
+  FOREIGN KEY (sec_employee_id) REFERENCES Employees (_id),
+  FOREIGN KEY (supplier_id) REFERENCES Suppliers (_id),
+  FOREIGN KEY (type_id) REFERENCES PaymentsTypes (_id),
+  FOREIGN KEY (employee_id) REFERENCES Employees (_id)
 );
 ''',
   '''
@@ -134,28 +134,28 @@ CREATE TABLE Incomes
   money            FLOAT    NOT NULL,
   notes            TEXT     NULL    ,
   is_from_employee BOOL     NULL    ,
-  employee__id      INTEGER  NOT NULL,
-  customer__id      INTEGER  NOT NULL,
-  type__id          INTEGER  NOT NULL,
-  sec_employee__id  INTEGER  NULL    ,
+  employee_id      INTEGER  NOT NULL,
+  customer_id      INTEGER  NOT NULL,
+  type_id          INTEGER  NOT NULL,
+  sec_employee_id  INTEGER  NULL    ,
   PRIMARY KEY (_id AUTOINCREMENT),
-  FOREIGN KEY (employee__id) REFERENCES Employees (_id),
-  FOREIGN KEY (customer__id) REFERENCES Customers (_id),
-  FOREIGN KEY (type__id) REFERENCES IncomesTypes (_id),
-  FOREIGN KEY (sec_employee__id) REFERENCES Employees (_id)
+  FOREIGN KEY (employee_id) REFERENCES Employees (_id),
+  FOREIGN KEY (customer_id) REFERENCES Customers (_id),
+  FOREIGN KEY (type_id) REFERENCES IncomesTypes (_id),
+  FOREIGN KEY (sec_employee_id) REFERENCES Employees (_id)
 );
 ''',
   '''
 CREATE TABLE Prices
 (
   _id          INTEGER  NOT NULL UNIQUE,
-  product__id  INTEGER  NULL    ,
-  material__id INTEGER  NULL    ,
+  product_id  INTEGER  NULL    ,
+  material_id INTEGER  NULL    ,
   date        DATETIME NOT NULL,
   price       FLOAT    NOT NULL,
   PRIMARY KEY (_id AUTOINCREMENT),
-  FOREIGN KEY (product__id) REFERENCES Products (_id),
-  FOREIGN KEY (material__id) REFERENCES Materials (_id)
+  FOREIGN KEY (product_id) REFERENCES Products (_id),
+  FOREIGN KEY (material_id) REFERENCES Materials (_id)
 );
 ''',
   '''
@@ -163,12 +163,12 @@ CREATE TABLE Prices
 CREATE TABLE ProductsRecipes
 (
   _id          INTEGER NOT NULL UNIQUE,
-  material__id INTEGER NOT NULL,
-  product__id  INTEGER NOT NULL,
+  material_id INTEGER NOT NULL,
+  product_id  INTEGER NOT NULL,
   quantity    FLOAT   NOT NULL,
   PRIMARY KEY (_id AUTOINCREMENT),
-  FOREIGN KEY (product__id) REFERENCES Products (_id),
-  FOREIGN KEY (material__id) REFERENCES Materials (_id)
+  FOREIGN KEY (product_id) REFERENCES Products (_id),
+  FOREIGN KEY (material_id) REFERENCES Materials (_id)
 );
 '''
 ];
