@@ -9,6 +9,7 @@ class _SuppliersChooser extends StatefulWidget {
 
 class __SuppliersChooserState extends State<_SuppliersChooser> {
   ThemeData get theme => Theme.of(context);
+  final ChooseSupplierCubit _cubit = ChooseSupplierCubit();
 
   _chooseSupplier() {
     showCupertinoModalBottomSheet(
@@ -28,8 +29,15 @@ class __SuppliersChooserState extends State<_SuppliersChooser> {
             height: 1,
             thickness: 1,
           ),
-          BlocProvider<SuplliersCubit>(
-            create: (context) => SuplliersCubit(),
+          MultiBlocProvider(
+            providers: [
+              BlocProvider<SuplliersCubit>(
+                create: (context) => SuplliersCubit(),
+              ),
+              BlocProvider<ChooseSupplierCubit>.value(
+                value: _cubit,
+              ),
+            ],
             child: const Material(
               child: _ChooseSupplierView(),
             ),
@@ -40,19 +48,29 @@ class __SuppliersChooserState extends State<_SuppliersChooser> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    String dropdownValue = "";
+  void dispose() {
+    _cubit.close();
+    super.dispose();
+  }
 
-    return InkWell(
-      onTap: _chooseSupplier,
-      child: DropdownButtonFormField<String>(
-          decoration: const InputDecoration(labelText: 'المورد'),
-          value: "قم بالضغط لإختيار مورد",
-          items: null,
-          enableFeedback: true,
-          onChanged: (val) => setState(() {
-                dropdownValue = val!;
-              })),
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider<ChooseSupplierCubit>(
+      create: (context) => _cubit,
+      lazy: true,
+      child: Builder(builder: (context) {
+        SupplierModel? model = context.watch<ChooseSupplierCubit>().model;
+        return InkWell(
+          onTap: _chooseSupplier,
+          child: DropdownButtonFormField<int?>(
+            decoration: InputDecoration(labelText: model?.name ?? 'المورد'),
+            value: model?.id,
+            items: null,
+            enableFeedback: true,
+            onChanged: (val) {},
+          ),
+        );
+      }),
     );
   }
 }
@@ -68,12 +86,12 @@ class _ChooseSupplierView extends StatefulWidget {
 
 class _ChooseSupplierViewState extends State<_ChooseSupplierView> {
   final _suppliersList = SuppliersList().suppliersList;
-  int? _selectedIndex;
   late final SuplliersCubit _supplierCubit;
-
+  late final ChooseSupplierCubit _chooseSupplierCubit;
   @override
   void initState() {
     _supplierCubit = BlocProvider.of<SuplliersCubit>(context);
+    _chooseSupplierCubit = BlocProvider.of<ChooseSupplierCubit>(context);
     super.initState();
   }
 
@@ -112,12 +130,11 @@ class _ChooseSupplierViewState extends State<_ChooseSupplierView> {
         SupplierModel model = _suppliersList[index];
         return ListTile(
           title: Text(model.name),
-          selected: index == _selectedIndex,
+          selected: index == context.watch<ChooseSupplierCubit>().currentIndex,
           subtitle: Text(model.phoneNumber ?? ""),
           onTap: () {
-            setState(() {
-              _selectedIndex = index;
-            });
+            _chooseSupplierCubit.choose(index);
+            Navigator.of(context).pop();
           },
         );
       }),
