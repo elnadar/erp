@@ -19,6 +19,7 @@ part 'parts/loigc_builder/logic_builder.dart';
 part 'parts/loigc_builder/material_tile.dart';
 part 'parts/bottom_sheet/bottom_sheet_builder.dart';
 part 'parts/bottom_sheet/bottom_sheet_form.dart';
+part 'parts/bottom_sheet/supplier_chooser/supplier_chooser.dart';
 
 class MaterialsView extends StatelessWidget {
   const MaterialsView({super.key, required this.name});
