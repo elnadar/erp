@@ -7,7 +7,10 @@ import 'package:meta/meta.dart';
 part 'choose_supplier_state.dart';
 
 class ChooseSupplierCubit extends Cubit<ChooseSupplierState> {
-  ChooseSupplierCubit() : super(ChooseSupplierInitial());
+  ChooseSupplierCubit._sharedInstance() : super(ChooseSupplierInitial());
+  static final ChooseSupplierCubit _shared =
+      ChooseSupplierCubit._sharedInstance();
+  factory ChooseSupplierCubit() => _shared;
   SupplierModel? _model;
   SupplierModel? get model => _model;
   int? _currentIndex;
