@@ -51,16 +51,18 @@ class _AddMaterialFormState extends State<_AddMaterialForm> {
   }
 
   _submit() {
-    MaterialModel model = MaterialModel(
-        name: _nameController.text,
-        quantity: double.parse(_quantityController.text),
-        measurement: _unitsChooserWidget.selectedVal,
-        notes: _notesController.text,
-        supplierId: _suppliersChooserWidget.selectedVal);
-    _cubit.addData(model).then((v) {
-      BlocProvider.of<MaterialsCubit>(context).getData();
-      Navigator.of(context).pop();
-    });
+    if (_formKey.currentState!.validate()) {
+      MaterialModel model = MaterialModel(
+          name: _nameController.text,
+          quantity: double.parse(_quantityController.text),
+          measurement: _unitsChooserWidget.selectedVal,
+          notes: _notesController.text,
+          supplierId: _suppliersChooserWidget.selectedVal);
+      _cubit.addData(model).then((v) {
+        BlocProvider.of<MaterialsCubit>(context).getData();
+        Navigator.of(context).pop();
+      });
+    }
   }
 
   @override
@@ -80,16 +82,27 @@ class _AddMaterialFormState extends State<_AddMaterialForm> {
             decoration: const InputDecoration(labelText: "اسم الخامة"),
             keyboardType: TextInputType.name,
             textInputAction: TextInputAction.next,
+            validator: ((value) {
+              if (value!.isEmpty) {
+                return "لا يمكنك ترك هذه الخانة فارغة";
+              }
+            }),
           ),
           const SizedBox(height: 16),
           TextFormField(
             controller: _quantityController,
+            textDirection: TextDirection.ltr,
             decoration: const InputDecoration(labelText: "الوزن"),
             keyboardType: const TextInputType.numberWithOptions(decimal: true),
             textInputAction: TextInputAction.next,
             inputFormatters: [
-              FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,5}')),
+              FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d{0,5}')),
             ],
+            validator: ((value) {
+              if (value!.isEmpty) {
+                return "لا يمكنك ترك هذه الخانة فارغة";
+              }
+            }),
           ),
           const SizedBox(height: 16),
           _unitsChooserWidget,
