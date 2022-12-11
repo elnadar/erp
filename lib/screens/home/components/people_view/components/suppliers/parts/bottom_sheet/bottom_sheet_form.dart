@@ -46,16 +46,18 @@ class _AddSupplierFormState extends State<_AddSupplierForm> {
   }
 
   void _submit() {
-    SupplierModel model = SupplierModel(
-        name: _nameController.text,
-        phoneNumber: _phoneController.text,
-        address: _addressController.text,
-        notes: _noteController.text);
+    if (_formKey.currentState!.validate()) {
+      SupplierModel model = SupplierModel(
+          name: _nameController.text,
+          phoneNumber: _phoneController.text,
+          address: _addressController.text,
+          notes: _noteController.text);
 
-    _cubit.addData(model).then((v) {
-      BlocProvider.of<SuplliersCubit>(context).getData();
-      Navigator.of(context).pop();
-    });
+      _cubit.addData(model).then((v) {
+        BlocProvider.of<SuplliersCubit>(context).getData();
+        Navigator.of(context).pop();
+      });
+    }
   }
 
   @override
@@ -76,6 +78,11 @@ class _AddSupplierFormState extends State<_AddSupplierForm> {
             decoration: const InputDecoration(labelText: "اسم المورد"),
             keyboardType: TextInputType.name,
             textInputAction: TextInputAction.next,
+            validator: ((value) {
+              if (value!.isEmpty) {
+                return "لا يمكنك ترك هذه الخانة فارغة";
+              }
+            }),
           ),
           const SizedBox(height: 16),
           TextFormField(
