@@ -15,12 +15,22 @@ class _AddMaterialFormState extends State<_AddMaterialForm> {
   ThemeData get theme => Theme.of(context);
 
   late final GlobalKey<FormState> _formKey;
-  late final TextEditingController _nameController;
+  late final TextEditingController _nameController,
+      _quantityController,
+      _notesController;
+  late final _SuppliersChooser _suppliersChooserWidget;
+  late final _UnitsChooser _unitsChooserWidget;
+  late final MaterialsAddCubit _cubit;
 
   @override
   void initState() {
     _formKey = GlobalKey<FormState>();
     _nameController = TextEditingController();
+    _quantityController = TextEditingController();
+    _notesController = TextEditingController();
+    _suppliersChooserWidget = _SuppliersChooser();
+    _unitsChooserWidget = _UnitsChooser();
+    _cubit = BlocProvider.of<MaterialsAddCubit>(context);
     super.initState();
   }
 
@@ -28,6 +38,9 @@ class _AddMaterialFormState extends State<_AddMaterialForm> {
   void dispose() {
     _formKey.currentState?.dispose();
     _nameController.dispose();
+    _quantityController.dispose();
+    _notesController.dispose();
+    _cubit.close();
     super.dispose();
   }
 
@@ -37,11 +50,23 @@ class _AddMaterialFormState extends State<_AddMaterialForm> {
     super.deactivate();
   }
 
-  _submit() {}
+  _submit() {
+    MaterialModel model = MaterialModel(
+        name: _nameController.text,
+        quantity: double.parse(_quantityController.text),
+        measurement: _unitsChooserWidget.selectedVal,
+        notes: _notesController.text,
+        supplierId: _suppliersChooserWidget.selectedVal);
+    _cubit.addData(model).then((v) {
+      BlocProvider.of<MaterialsCubit>(context).getData();
+      Navigator.of(context).pop();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: _formKey,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -58,34 +83,23 @@ class _AddMaterialFormState extends State<_AddMaterialForm> {
           ),
           const SizedBox(height: 16),
           TextFormField(
-            controller: _nameController,
+            controller: _quantityController,
             decoration: const InputDecoration(labelText: "الوزن"),
-            keyboardType: TextInputType.name,
+            keyboardType: const TextInputType.numberWithOptions(decimal: true),
             textInputAction: TextInputAction.next,
+            inputFormatters: [
+              FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,5}')),
+            ],
           ),
           const SizedBox(height: 16),
-          const _UnitsChooser(),
+          _unitsChooserWidget,
           const SizedBox(height: 16),
-          const _SuppliersChooser(),
-          // TextFormField(
-          //   controller: _nameController,
-          //   decoration: const InputDecoration(labelText: "المورد"),
-          //   keyboardType: TextInputType.name,
-          //   textInputAction: TextInputAction.next,
-          // ),
-          // SizedBox(
-          //   width: double.infinity,
-          //   child: FilledTonalButton(
-          //     onPressed: _chooseSupplier,
-          //     child: const Text("اختر مورد"),
-          //   ),
-          // ),
-
+          _suppliersChooserWidget,
           const SizedBox(height: 16),
           TextFormField(
             minLines: 3,
             maxLines: 5,
-            controller: _nameController,
+            controller: _notesController,
             keyboardType: TextInputType.multiline,
             textInputAction: TextInputAction.newline,
             decoration: const InputDecoration(
@@ -108,7 +122,13 @@ class _AddMaterialFormState extends State<_AddMaterialForm> {
 }
 
 class _UnitsChooser extends StatefulWidget {
-  const _UnitsChooser({super.key});
+  _UnitsChooser({super.key});
+  WeightUnits? _selectedVal;
+  set selectedVal(val) {
+    _selectedVal = val;
+  }
+
+  get selectedVal => _selectedVal;
 
   @override
   State<_UnitsChooser> createState() => _UnitsChooserState();
@@ -117,11 +137,11 @@ class _UnitsChooser extends StatefulWidget {
 class _UnitsChooserState extends State<_UnitsChooser> {
   @override
   Widget build(BuildContext context) {
-    WeightUnits dropdownValue = _lst.first;
+    widget.selectedVal = _lst.first;
 
-    return DropdownButtonFormField<WeightUnits>(
+    return DropdownButtonFormField<WeightUnits?>(
         decoration: const InputDecoration(labelText: 'وحدة القياس'),
-        value: dropdownValue,
+        value: widget.selectedVal,
         items: _lst.map<DropdownMenuItem<WeightUnits>>((WeightUnits value) {
           return DropdownMenuItem<WeightUnits>(
             value: value,
@@ -129,7 +149,7 @@ class _UnitsChooserState extends State<_UnitsChooser> {
           );
         }).toList(),
         onChanged: (val) => setState(() {
-              dropdownValue = val!;
+              widget.selectedVal = val!;
             }));
   }
 }

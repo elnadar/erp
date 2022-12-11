@@ -1,7 +1,14 @@
 part of '../../../materials_view.dart';
 
 class _SuppliersChooser extends StatefulWidget {
-  const _SuppliersChooser({super.key});
+  _SuppliersChooser({super.key});
+
+  int? _selectedVal;
+  set selectedVal(val) {
+    _selectedVal = val;
+  }
+
+  get selectedVal => _selectedVal;
 
   @override
   State<_SuppliersChooser> createState() => __SuppliersChooserState();
@@ -60,15 +67,16 @@ class __SuppliersChooserState extends State<_SuppliersChooser> {
       lazy: true,
       child: Builder(builder: (context) {
         SupplierModel? model = context.watch<ChooseSupplierCubit>().model;
+        widget.selectedVal = model?.id;
+        debugPrint(widget.selectedVal.toString());
         return InkWell(
           onTap: _chooseSupplier,
           child: DropdownButtonFormField<int?>(
-            decoration: InputDecoration(labelText: model?.name ?? 'المورد'),
-            value: model?.id,
-            items: null,
-            enableFeedback: true,
-            onChanged: (val) {},
-          ),
+              disabledHint: Text(model?.name ?? 'المورد'),
+              value: widget.selectedVal,
+              onTap: null,
+              items: null,
+              onChanged: null),
         );
       }),
     );
@@ -103,15 +111,16 @@ class _ChooseSupplierViewState extends State<_ChooseSupplierView> {
 
   @override
   Widget build(BuildContext context) {
+    final state = context.watch<SuplliersCubit>().state;
     if (_suppliersList.isEmpty) {
-      if (_supplierCubit.state is SuplliersLoading) {
+      if (state is SuplliersLoading) {
         return const SizedBox(
           height: 200,
           child: Center(
             child: CircularProgressIndicator(),
           ),
         );
-      } else if (_supplierCubit.state is! SuplliersData) {
+      } else if (state is! SuplliersData) {
         return const SizedBox(
           height: 200,
           child: Center(

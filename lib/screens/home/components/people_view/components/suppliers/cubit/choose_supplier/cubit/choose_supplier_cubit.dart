@@ -20,7 +20,6 @@ class ChooseSupplierCubit extends Cubit<ChooseSupplierState> {
     try {
       _model = SuppliersList().suppliersList[index];
       _currentIndex = index;
-      debugPrint("$_currentIndex");
       emit(ChooseSupplierDone());
     } catch (e) {
       emit(ChooseSupplierError(e.toString()));
