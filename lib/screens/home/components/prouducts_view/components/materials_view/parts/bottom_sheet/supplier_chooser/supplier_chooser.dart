@@ -72,11 +72,18 @@ class __SuppliersChooserState extends State<_SuppliersChooser> {
         return InkWell(
           onTap: _chooseSupplier,
           child: DropdownButtonFormField<int?>(
-              disabledHint: Text(model?.name ?? 'المورد'),
-              value: widget.selectedVal,
-              onTap: null,
-              items: null,
-              onChanged: null),
+            disabledHint: Text(model?.name ?? 'المورد'),
+            autofocus: true,
+            value: widget.selectedVal,
+            iconDisabledColor: Colors.grey.shade700,
+            decoration: InputDecoration(
+                labelText: model?.name == null ? null : 'المورد',
+                disabledBorder:
+                    Theme.of(context).inputDecorationTheme.enabledBorder),
+            onTap: null,
+            items: null,
+            onChanged: null,
+          ),
         );
       }),
     );
