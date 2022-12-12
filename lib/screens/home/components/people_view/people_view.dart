@@ -1,5 +1,5 @@
 import 'package:erp/screens/home/components/menu_bar_icon/menu_bar_icon.dart';
-import 'package:erp/screens/home/components/prouducts_view/components/materials_view/materials_view.dart';
+import 'package:erp/screens/home/components/prouducts_screen/components/materials_view/materials_view.dart';
 import 'package:erp/screens/home/components/sliver_tab_bar/sliver_tab_bar.dart';
 import 'package:flutter/material.dart';
 

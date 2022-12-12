@@ -5,7 +5,6 @@ import 'package:erp/screens/home/components/people_view/components/suppliers/cub
 import 'package:erp/screens/home/components/people_view/components/suppliers/cubit/suplliers/suplliers_cubit.dart';
 import 'package:erp/screens/home/components/people_view/components/suppliers/data/supplier_model.dart';
 import 'package:erp/screens/home/components/people_view/components/suppliers/data/suppliers_list.dart';
-import 'package:erp/screens/home/components/prouducts_view/components/materials_view/cubits/materials_add/materials_add_cubit.dart';
 import 'package:erp/screens/home/components/sliver_tab_bar/sliver_tab_bar_scrollable_child.dart';
 import 'package:erp/screens/home/components/sliver_tab_bar/sliver_tab_bar_scrollable_child_with_fab.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +14,7 @@ import 'package:go_router/go_router.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 import 'cubits/materials/materials_cubit.dart';
+import 'cubits/materials_add/materials_add_cubit.dart';
 import 'data/material_model.dart';
 import 'data/materials_list.dart';
 

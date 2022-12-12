@@ -9,7 +9,7 @@ import 'components/drawer_mat3/drawer_mat3_tile.dart';
 import 'components/finance_view/finance_view.dart';
 import 'components/home_view/home_view.dart';
 import 'components/people_view/people_view.dart';
-import 'components/prouducts_view/products_view.dart';
+import 'components/prouducts_screen/products_screen.dart';
 import 'controllers/bottom_nav_bar/bottom_nav_bar_cubit.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -83,7 +83,7 @@ class HomeScreen extends StatelessWidget {
       body: const <Widget>[
         HomeView(),
         PeopleView(),
-        ProductsView(),
+        ProductsScreen(),
         FinanceView(),
         Center(
           child: Text("الإشعارات"),

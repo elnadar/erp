@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:erp/screens/home/components/prouducts_view/components/materials_view/data/materials_db.dart';
-import 'package:erp/screens/home/components/prouducts_view/components/materials_view/data/materials_list.dart';
+import 'package:erp/screens/home/components/prouducts_screen/components/materials_view/data/materials_db.dart';
+import 'package:erp/screens/home/components/prouducts_screen/components/materials_view/data/materials_list.dart';
 import 'package:flutter/foundation.dart';
 import 'package:meta/meta.dart';
 
