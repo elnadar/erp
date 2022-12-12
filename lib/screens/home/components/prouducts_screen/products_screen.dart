@@ -3,6 +3,7 @@ import 'package:erp/screens/home/components/sliver_tab_bar/sliver_tab_bar.dart';
 import 'package:flutter/material.dart';
 
 import 'components/materials_view/materials_view.dart';
+import 'components/products_view/products_view.dart';
 
 class ProductsScreen extends StatelessWidget {
   const ProductsScreen({super.key});
@@ -39,7 +40,7 @@ class ProductsScreen extends StatelessWidget {
         MaterialsView(
           name: "الخامات",
         ),
-        MaterialsView(
+        ProductsView(
           name: "المنتجات",
         )
       ]),
