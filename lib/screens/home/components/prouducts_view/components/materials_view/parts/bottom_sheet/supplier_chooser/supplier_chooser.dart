@@ -119,6 +119,22 @@ class _ChooseSupplierViewState extends State<_ChooseSupplierView> {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<SuplliersCubit>().state;
+    final dataShower = ListView.builder(
+      shrinkWrap: true,
+      itemBuilder: ((context, index) {
+        SupplierModel model = _suppliersList[index];
+        return ListTile(
+          title: Text(model.name),
+          selected: index == context.watch<ChooseSupplierCubit>().currentIndex,
+          subtitle: Text(model.phoneNumber ?? ""),
+          onTap: () {
+            _chooseSupplierCubit.choose(index);
+            Navigator.of(context).pop();
+          },
+        );
+      }),
+      itemCount: _suppliersList.length,
+    );
     if (_suppliersList.isEmpty) {
       if (state is SuplliersLoading) {
         return const SizedBox(
@@ -138,23 +154,10 @@ class _ChooseSupplierViewState extends State<_ChooseSupplierView> {
             ),
           ),
         );
+      } else {
+        return dataShower;
       }
     }
-    return ListView.builder(
-      shrinkWrap: true,
-      itemBuilder: ((context, index) {
-        SupplierModel model = _suppliersList[index];
-        return ListTile(
-          title: Text(model.name),
-          selected: index == context.watch<ChooseSupplierCubit>().currentIndex,
-          subtitle: Text(model.phoneNumber ?? ""),
-          onTap: () {
-            _chooseSupplierCubit.choose(index);
-            Navigator.of(context).pop();
-          },
-        );
-      }),
-      itemCount: _suppliersList.length,
-    );
+    return dataShower;
   }
 }
