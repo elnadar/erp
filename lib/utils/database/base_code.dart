@@ -35,9 +35,8 @@ CREATE TABLE PaymentsTypes
 CREATE TABLE Products
 (
   _id          INTEGER NOT NULL UNIQUE,
-  name        VARC    NOT NULL UNIQUE,
-  quantity    INT     NOT NULL,
-  description TEXT    NULL    ,
+  name         VARCHAR    NOT NULL UNIQUE,
+  notes        TEXT    NULL    ,
   PRIMARY KEY (_id AUTOINCREMENT)
 );
 ''',
