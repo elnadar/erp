@@ -15,18 +15,20 @@ class _LogicBuilder extends StatelessWidget {
               child: CircularProgressIndicator(),
             ),
           );
-        } else if (state is ProductsNoDataFound) {
+        } else if (state is ProductsNoDataFound ||
+            ProductsList().productsList.isEmpty) {
           return const SliverFillRemaining(
             child: Center(
               child: Padding(
                 padding: EdgeInsets.all(12.0),
                 child: Text(
-                    'لا توجد منتجات خالة بك حاليًا، قم بالضغط على زر + لإضافة منتج جديد.'),
+                    'لا توجد منتجات خاصة بك حاليًا، قم بالضغط على زر + لإضافة منتج جديد.'),
               ),
             ),
           );
         }
         final List<ProductModel> data = ProductsList().productsList;
+        debugPrint(data.toString());
         return SliverList(
           delegate: SliverChildBuilderDelegate(
             (BuildContext context, int index) {

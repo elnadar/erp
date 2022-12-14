@@ -4,12 +4,18 @@ import 'dart:convert';
 class ProductModel {
   final int? id;
   final String name;
-  final String notes;
+  final String? notes;
   ProductModel({
     this.id,
     required this.name,
-    required this.notes,
+    this.notes,
   });
+
+  static List<String> get columns => [
+        '_id',
+        'name',
+        'notes',
+      ];
 
   ProductModel copyWith({
     int? id,
@@ -23,12 +29,6 @@ class ProductModel {
     );
   }
 
-  static List<String> get columns => [
-        '_id',
-        'name',
-        'notes',
-      ];
-
   Map<String, dynamic> toSqlInsert() {
     return <String, dynamic>{
       'name': name == '' ? null : name,
@@ -38,7 +38,7 @@ class ProductModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      '_id': id,
+      'id': id,
       'name': name,
       'notes': notes,
     };
@@ -46,9 +46,9 @@ class ProductModel {
 
   factory ProductModel.fromMap(Map<String, dynamic> map) {
     return ProductModel(
-      id: map['_id'] as int,
+      id: map['id'] != null ? map['id'] as int : null,
       name: map['name'] as String,
-      notes: map['notes'] as String,
+      notes: map['notes'] != null ? map['notes'] as String : null,
     );
   }
 

@@ -9,7 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
-import 'cubit/products_add/cubit/products_add_cubit.dart';
+import 'cubit/products_add/products_add_cubit.dart';
 import 'data/product_model.dart';
 import 'data/products_list.dart';
 
