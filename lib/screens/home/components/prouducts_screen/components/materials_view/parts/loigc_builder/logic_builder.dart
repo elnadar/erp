@@ -18,8 +18,11 @@ class _LogicBuilder extends StatelessWidget {
         } else if (state is MaterialsNoDataFound) {
           return const SliverFillRemaining(
             child: Center(
-              child: Text(
-                  'لا توجد خامات حاليًا، قم بالضغط على زر + لإضافة خامة جديدة.'),
+              child: Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Text(
+                    'لا توجد خامات حاليًا، قم بالضغط على زر + لإضافة خامة جديدة.'),
+              ),
             ),
           );
         }
