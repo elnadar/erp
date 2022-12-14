@@ -1,5 +1,6 @@
 import 'package:erp/components/custom_buttons.dart';
 import 'package:erp/components/custom_text.dart';
+import 'package:erp/components/sheet_builder.dart';
 import 'package:erp/screens/home/components/prouducts_screen/components/products_view/cubit/products/products_cubit.dart';
 import 'package:erp/screens/home/components/sliver_tab_bar/sliver_tab_bar_scrollable_child.dart';
 import 'package:erp/screens/home/components/sliver_tab_bar/sliver_tab_bar_scrollable_child_with_fab.dart';
@@ -62,7 +63,10 @@ class _ScreenViewState extends State<_ScreenView> {
   Widget build(BuildContext context) {
     return SliverTabBarScrollableChildWithFab(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () => sheetBuilder(
+            context,
+            (contxt) => BlocProvider.value(
+                value: _cubit, child: _builderOfSheetBuilder(contxt))),
         tooltip: "إضافة منتج",
         child: const Icon(Icons.add),
       ),
