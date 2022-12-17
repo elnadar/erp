@@ -38,7 +38,7 @@ class ProductModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
+      '_id': id,
       'name': name,
       'notes': notes,
     };
@@ -46,7 +46,7 @@ class ProductModel {
 
   factory ProductModel.fromMap(Map<String, dynamic> map) {
     return ProductModel(
-      id: map['id'] != null ? map['id'] as int : null,
+      id: map['_id'] != null ? map['_id'] as int : null,
       name: map['name'] as String,
       notes: map['notes'] != null ? map['notes'] as String : null,
     );
