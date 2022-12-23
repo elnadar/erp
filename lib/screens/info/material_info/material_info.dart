@@ -1,8 +1,16 @@
+import 'package:erp/components/custom_cards.dart';
+import 'package:erp/components/custom_text.dart';
 import 'package:erp/components/text_weights.dart';
+import 'package:erp/screens/home/components/prouducts_screen/components/materials_view/data/material_model.dart';
+import 'package:erp/screens/home/components/prouducts_screen/controllers/prices_controller/cubit/prices/prices_cubit.dart';
+import 'package:erp/screens/home/components/prouducts_screen/controllers/prices_controller/data/prices_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'cubit/material_info_cubit.dart';
+
+part 'parts/tables/main_data_table.dart';
+part 'parts/tables/prices_table.dart';
 
 class MaterialInfo extends StatefulWidget {
   const MaterialInfo({super.key});
@@ -28,13 +36,51 @@ class _MaterialInfoState extends State<MaterialInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: BlocBuilder<MaterialInfoCubit, MaterialInfoState>(
         builder: (context, state) {
           if (state is MaterialInfoLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return Column(
+              children: const [
+                Align(
+                  alignment: AlignmentDirectional.topStart,
+                  child: BackButton(),
+                ),
+                Center(child: CircularProgressIndicator()),
+              ],
+            );
           } else if (state is MaterialInfoDone) {
-            return Center(child: H1(_cubit.model?.name ?? ""));
+            final MaterialModel model = _cubit.model!;
+            return Stack(
+              children: [
+                CustomScrollView(
+                  slivers: [
+                    SliverAppBar.large(
+                      title: Text("خامة ${model.name}"),
+                    ),
+                    SliverToBoxAdapter(
+                      child: _MainDataTable(model: model),
+                    ),
+                    SliverToBoxAdapter(
+                      child: BlocProvider<PricesCubit>(
+                        create: (context) => PricesCubit(),
+                        child: const _PricesTable(),
+                      ),
+                    )
+                  ],
+                ),
+                Align(
+                  alignment: AlignmentDirectional.bottomEnd,
+                  child: Padding(
+                    padding: EdgeInsets.all(20),
+                    child: FloatingActionButton(
+                      onPressed: () {},
+                      tooltip: "تعديل",
+                      child: const Icon(Icons.edit),
+                    ),
+                  ),
+                )
+              ],
+            );
           }
           debugPrint(state.toString());
           return const Center(child: Text("Not Found"));
