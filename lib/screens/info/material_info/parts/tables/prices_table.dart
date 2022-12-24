@@ -59,6 +59,36 @@ class _PricesTableState extends State<_PricesTable> {
         }
         return Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text.rich(
+                    TextSpan(
+                      children: [
+                        const TextSpan(text: 'السعر الحالي: '),
+                        TextSpan(
+                          text: "${_cubit.pricesList[0].price} ج.م",
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                  FilledButton(
+                      padding: null,
+                      onPressed: _addPrice,
+                      child: const Text("تعديل السعر")),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: Divider(
+                height: 1,
+                color: Theme.of(context).colorScheme.outline,
+              ),
+            ),
             SizedBox(
               width: double.infinity,
               child: DataTable(
@@ -98,13 +128,6 @@ class _PricesTableState extends State<_PricesTable> {
                 }).toList(),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: FilledButton(
-                  padding: null,
-                  onPressed: _addPrice,
-                  child: const Text("تعديل السعر")),
-            )
           ],
         );
       },
