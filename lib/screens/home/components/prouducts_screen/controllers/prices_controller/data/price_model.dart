@@ -73,7 +73,7 @@ class PriceModel {
       id: map['_id'] != null ? map['_id'] as int : null,
       productId: map['product_id'] != null ? map['product_id'] as int : null,
       materialId: map['material_id'] != null ? map['material_id'] as int : null,
-      date: DateTime.fromMillisecondsSinceEpoch(map['date'] as int),
+      date: DateTime.parse(map['date']),
       price: map['price'] as double,
     );
   }

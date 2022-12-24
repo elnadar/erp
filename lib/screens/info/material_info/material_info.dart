@@ -1,16 +1,24 @@
+import 'package:erp/components/custom_buttons.dart';
 import 'package:erp/components/custom_cards.dart';
 import 'package:erp/components/custom_text.dart';
 import 'package:erp/components/text_weights.dart';
 import 'package:erp/screens/home/components/prouducts_screen/components/materials_view/data/material_model.dart';
 import 'package:erp/screens/home/components/prouducts_screen/controllers/prices_controller/cubit/prices/prices_cubit.dart';
+import 'package:erp/screens/home/components/prouducts_screen/controllers/prices_controller/cubit/prices_add/prices_add_cubit.dart';
+import 'package:erp/screens/home/components/prouducts_screen/controllers/prices_controller/data/price_model.dart';
 import 'package:erp/screens/home/components/prouducts_screen/controllers/prices_controller/data/prices_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
+import '../../../components/sheet_builder.dart';
 import 'cubit/material_info_cubit.dart';
 
 part 'parts/tables/main_data_table.dart';
 part 'parts/tables/prices_table.dart';
+part 'parts/bottom_sheet/add_price.dart';
+part 'parts/bottom_sheet/add_price_form.dart';
 
 class MaterialInfo extends StatefulWidget {
   const MaterialInfo({super.key});
@@ -62,7 +70,7 @@ class _MaterialInfoState extends State<MaterialInfo> {
                     ),
                     SliverToBoxAdapter(
                       child: BlocProvider<PricesCubit>(
-                        create: (context) => PricesCubit(),
+                        create: (context) => PricesCubit(id: model.id),
                         child: const _PricesTable(),
                       ),
                     )

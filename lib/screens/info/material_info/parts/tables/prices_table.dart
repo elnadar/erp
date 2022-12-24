@@ -25,6 +25,7 @@ class _PricesTableState extends State<_PricesTable> {
 
   @override
   Widget build(BuildContext context) {
+    _cubit.getMaterialsPricesById();
     return OutlinedCard(child: BlocBuilder<PricesCubit, PricesState>(
       builder: (context, state) {
         if (state is PricesLoading) {
@@ -34,39 +35,53 @@ class _PricesTableState extends State<_PricesTable> {
               child: CircularProgressIndicator(),
             ),
           );
-        } else if (state is PricesNoDataFound ||
-            PricesList().materialsList.isEmpty) {
+        } else if (state is PricesNoDataFound) {
           return Padding(
             padding: const EdgeInsets.all(20),
             child: Center(
               child: TextButton(
-                  onPressed: () {},
+                  onPressed: () => sheetBuilder(
+                      context,
+                      (contxt) => MultiBlocProvider(
+                            providers: [
+                              BlocProvider.value(value: _cubit),
+                              BlocProvider.value(
+                                  value: BlocProvider.of<MaterialInfoCubit>(
+                                      context)),
+                            ],
+                            child: _builderOfSheetBuilder(contxt),
+                          )),
                   child: const Text(
                       "لا توجد أسعار حاليا لهذه الخامة قم بالضغط هنا لإضافة سعر")),
             ),
           );
         }
-        return DataTable(columns: const [
-          DataColumn(
-              label: Expanded(
-            child: CustomText(
-              "السعر",
-              fontWeight: FontWeight.bold,
-            ),
-          )),
-          DataColumn(
-              label: Expanded(
-            child: CustomText(
-              "التاريخ",
-              fontWeight: FontWeight.bold,
-            ),
-          ))
-        ], rows: [
-          DataRow(cells: [
-            DataCell(Text("")),
-            DataCell(Text("")),
-          ])
-        ]);
+        return DataTable(
+          columns: const [
+            DataColumn(
+                label: Expanded(
+              child: CustomText(
+                "السعر",
+                fontWeight: FontWeight.bold,
+              ),
+            )),
+            DataColumn(
+                label: Expanded(
+              child: CustomText(
+                "التاريخ",
+                fontWeight: FontWeight.bold,
+              ),
+            ))
+          ],
+          rows: _cubit.pricesList
+              .map((e) => DataRow(
+                    cells: [
+                      DataCell(Text("${e.price}")),
+                      DataCell(Text(e.date.toString())),
+                    ],
+                  ))
+              .toList(),
+        );
       },
     ));
   }

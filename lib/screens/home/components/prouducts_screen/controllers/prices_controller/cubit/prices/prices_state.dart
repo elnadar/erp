@@ -14,6 +14,6 @@ class PricesNoDataFound extends PricesState {}
 class PricesGettingDataError extends PricesState {
   final String error;
   PricesGettingDataError(this.error) {
-    debugPrint(error);
+    debugPrint('price getting data error: $error');
   }
 }

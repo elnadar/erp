@@ -40,10 +40,28 @@ class DbPricesTable {
 
     List<Map> maps = await db.query(_tableName,
         columns: PriceModel.columns,
-        where: '${type.toString()}_id != ?',
+        where: '${type.name}_id != ?',
         whereArgs: [null]);
     if (maps.isNotEmpty) {
       return PriceModel.fromMap(maps.first as Map<String, dynamic>);
+    }
+    return null;
+  }
+
+  getByTypeAndId(PricesType type, int typeId, {bool asc = false}) async {
+    final db = await _db;
+    List<PriceModel> pricesList = [];
+    List<Map> maps = await db.query(_tableName,
+        columns: PriceModel.columns,
+        where: '${type.name}_id = ?',
+        whereArgs: [typeId],
+        orderBy: 'date ${asc ? '' : 'DESC'}');
+    if (maps.isNotEmpty) {
+      for (final Map<String, dynamic> map
+          in maps as List<Map<String, dynamic>>) {
+        pricesList.add(PriceModel.fromMap(map));
+      }
+      return pricesList;
     }
     return null;
   }
