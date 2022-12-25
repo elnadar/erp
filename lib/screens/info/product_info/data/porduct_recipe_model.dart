@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class ProductsRecipeModel {
+class ProductRecipeModel {
   // _id         INTEGER NOT NULL UNIQUE,
   // material_id INTEGER NOT NULL,
   // product_id  INTEGER NOT NULL,
@@ -10,20 +10,26 @@ class ProductsRecipeModel {
   final int materialId;
   final int productId;
   final double quantity;
-  ProductsRecipeModel({
+  ProductRecipeModel({
     this.id,
     required this.materialId,
     required this.productId,
     required this.quantity,
   });
+  static const List<String> columns = [
+    '_id',
+    'product_id',
+    'quantity',
+    'material_id',
+  ];
 
-  ProductsRecipeModel copyWith({
+  ProductRecipeModel copyWith({
     int? id,
     int? materialId,
     int? productId,
     double? quantity,
   }) {
-    return ProductsRecipeModel(
+    return ProductRecipeModel(
       id: id ?? this.id,
       materialId: materialId ?? this.materialId,
       productId: productId ?? this.productId,
@@ -48,8 +54,8 @@ class ProductsRecipeModel {
     };
   }
 
-  factory ProductsRecipeModel.fromMap(Map<String, dynamic> map) {
-    return ProductsRecipeModel(
+  factory ProductRecipeModel.fromMap(Map<String, dynamic> map) {
+    return ProductRecipeModel(
       id: map['_id'] != null ? map['_id'] as int : null,
       materialId: map['material_id'] as int,
       productId: map['product_id'] as int,
@@ -59,8 +65,8 @@ class ProductsRecipeModel {
 
   String toJson() => json.encode(toMap());
 
-  factory ProductsRecipeModel.fromJson(String source) =>
-      ProductsRecipeModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ProductRecipeModel.fromJson(String source) =>
+      ProductRecipeModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
@@ -68,7 +74,7 @@ class ProductsRecipeModel {
   }
 
   @override
-  bool operator ==(covariant ProductsRecipeModel other) {
+  bool operator ==(covariant ProductRecipeModel other) {
     if (identical(this, other)) return true;
 
     return other.id == id &&
