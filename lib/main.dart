@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
+import 'material_3_underline_tab_indicator.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (Platform.isWindows || Platform.isLinux) {
@@ -47,11 +49,11 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         ),
         tabBarTheme: theme.tabBarTheme.copyWith(
-            indicator: UnderlineTabIndicator(
-              borderSide: BorderSide(
-                  width: 3.0,
-                  color: mainColorScheme.primary,
-                  style: BorderStyle.solid),
+            indicatorSize: TabBarIndicatorSize.label,
+            indicator: Mat3UnderlineTabIndicator(
+              borderRadius: 5,
+              borderSide:
+                  BorderSide(width: 3.0, color: mainColorScheme.primary),
             ),
             labelColor: mainColorScheme.primary,
             unselectedLabelColor: mainColorScheme.onSurfaceVariant,
