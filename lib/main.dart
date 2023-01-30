@@ -48,17 +48,16 @@ class MyApp extends StatelessWidget {
           backgroundColor: mainColorScheme.surface,
           elevation: 0,
         ),
-        tabBarTheme: theme.tabBarTheme.copyWith(
-            indicatorSize: TabBarIndicatorSize.label,
-            indicator: Mat3UnderlineTabIndicator(
-              borderRadius: 5,
-              borderSide:
-                  BorderSide(width: 3.0, color: mainColorScheme.primary),
-            ),
-            labelColor: mainColorScheme.primary,
-            unselectedLabelColor: mainColorScheme.onSurfaceVariant,
-            labelStyle: mainTextTheme.titleSmall,
-            unselectedLabelStyle: mainTextTheme.titleSmall),
+        // tabBarTheme: theme.tabBarTheme.copyWith(
+        //     indicatorSize: TabBarIndicatorSize.label,
+        //     indicator: Mat3UnderlineTabIndicator(
+        //       borderRadius: 10,
+        //       borderSide: BorderSide(width: 2, color: mainColorScheme.primary),
+        //     ),
+        //     labelColor: mainColorScheme.primary,
+        //     unselectedLabelColor: mainColorScheme.onSurfaceVariant,
+        //     labelStyle: mainTextTheme.titleSmall,
+        //     unselectedLabelStyle: mainTextTheme.titleSmall),
         // primarySwatch: Colors.teal,
         // colorSchemeSeed: const Color(0xff6750a4),
         colorScheme: mainColorScheme,
