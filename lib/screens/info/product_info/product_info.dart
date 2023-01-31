@@ -1,4 +1,3 @@
-import 'package:erp/components/custom_buttons.dart';
 import 'package:erp/components/custom_cards.dart';
 import 'package:erp/components/custom_text.dart';
 import 'package:erp/components/text_weights.dart';
@@ -9,8 +8,8 @@ import 'package:erp/screens/home/components/prouducts_screen/controllers/prices_
 import 'package:erp/screens/home/components/prouducts_screen/controllers/prices_controller/data/prices_list.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:flutter/material.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 import '../../../components/sheet_builder.dart';
 import 'cubit/product_info_cubit.dart';

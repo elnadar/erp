@@ -1,7 +1,6 @@
 import 'package:erp/screens/home/components/people_view/components/suppliers/data/suppliers_list.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:erp/components/custom_buttons.dart';
 import 'package:erp/components/custom_text.dart';
 import 'package:erp/components/sheet_builder.dart';
 import 'package:erp/screens/home/components/sliver_tab_bar/sliver_tab_bar_scrollable_child.dart';

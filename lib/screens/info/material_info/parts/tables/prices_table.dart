@@ -76,9 +76,7 @@ class _PricesTableState extends State<_PricesTable> {
                     ),
                   ),
                   FilledButton(
-                      padding: null,
-                      onPressed: _addPrice,
-                      child: const Text("تعديل السعر")),
+                      onPressed: _addPrice, child: const Text("تعديل السعر")),
                 ],
               ),
             ),
